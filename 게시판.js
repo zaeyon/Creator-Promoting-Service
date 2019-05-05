@@ -8,7 +8,7 @@ function templateHTML(title, list, body, control){
   <!doctype html>
   <html>
   <head>
-    <title>WEB1 - ${title}</title>
+    <title>${title}</title>
     <meta charset="utf-8">
   </head>
   <body>
@@ -55,7 +55,12 @@ var app = http.createServer(function(request,response){
             var list = templateList(filelist);
             var template = templateHTML(title, list,
               `<h2>${title}</h2>${description}`,
-              `<a href="/create">글쓰기</a> <a href="/update?id=${title}">수정하기</a>`
+              `<a href="/create">글쓰기</a>
+              <a href="/update?id=${title}">수정하기</a>
+              <form action="/delete_process" method="post">
+                <input type="hidden" name="id" value="${title}">
+                <input type="submit" value="삭제하기">
+              </form>`
             );
             response.writeHead(200);
             response.end(template);
@@ -130,10 +135,23 @@ var app = http.createServer(function(request,response){
           var description = post.description;
           fs.rename(`data/${id}`, `data/${title}`, function(error){
             fs.writeFile(`data/${title}`, description, 'utf8', function(err){
-              response.writeHead(302, {Location: `/?id=${title}`});
+              response.writeHead(302, {Location: `/?id=${qs.escape(title)}`});
               response.end();
             })
           });
+      });
+    } else if(pathname === '/delete_process'){
+      var body = '';
+      request.on('data', function(data){
+          body = body + data;
+      });
+      request.on('end', function(){
+          var post = qs.parse(body);
+          var id = post.id;
+          fs.unlink(`data/${id}`, function(error){
+            response.writeHead(302, {Location: `/`});
+            response.end();
+          })
       });
     } else {
       response.writeHead(404);
