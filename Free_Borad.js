@@ -2,34 +2,8 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
-
-function templateHTML(title, list, body, control){
-  return `
-  <!doctype html>
-  <html>
-  <head>
-    <title>${title}</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <h1><a href="/">자유게시판</a></h1>
-    ${list}
-    ${control}
-    ${body}
-  </body>
-  </html>
-  `;
-}
-function templateList(filelist){
-  var list = '<ol>';
-  var i = 0;
-  while(i < filelist.length){
-    list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
-    i = i + 1;
-  }
-  list = list+'</ol>';
-  return list;
-}
+var template = require('./library/template.js');
+var path = require('path');
 
 var app = http.createServer(function(request,response){
     var _url = request.url;
@@ -40,38 +14,39 @@ var app = http.createServer(function(request,response){
         fs.readdir('./data','utf8', function(error, filelist){
           var title = '게시판';
           var description = '게시판기능';
-          var list = templateList(filelist);
-          var template = templateHTML(title, list,
+          var list = template.list(filelist);
+          var html = template.html(title, list,
             `<h2>${title}</h2>${description}`,
-            `<a href="/create">글쓰기</a>`
+            `<input type="button" value="새 글쓰기" onclick="location.href='/create'">`
           );
           response.writeHead(200);
-          response.end(template);
+          response.end(html);
         });
       } else {
         fs.readdir('./data','utf8', function(error, filelist){
-          fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
+          var filteredID = path.parse(queryData.id).base;
+          fs.readFile(`data/${filteredID}`, 'utf8', function(err, description){
             var title = queryData.id;
-            var list = templateList(filelist);
-            var template = templateHTML(title, list,
+            var list = template.list(filelist);
+            var html = template.html(title, list,
               `<h2>${title}</h2>${description}`,
-              `<a href="/create">글쓰기</a>
-              <a href="/update?id=${title}">수정하기</a>
+              `<input type="button" value="새 글쓰기" onclick="location.href='/create'">
+              <input type="button" value="수정하기" onclick="location.href='/update?id=${title}'">
               <form action="/delete_process" method="post">
                 <input type="hidden" name="id" value="${title}">
                 <input type="submit" value="삭제하기">
               </form>`
             );
             response.writeHead(200);
-            response.end(template);
+            response.end(html);
           });
         });
       }
     } else if(pathname === '/create'){
       fs.readdir('./data','utf8', function(error, filelist){
         var title = '게시판';
-        var list = templateList(filelist);
-        var template = templateHTML(title, list, `
+        var list = template.list(filelist);
+        var html = template.html(title, list, `
           <form action="/create_process" method="post">
             <p><input type="text" name="title" placeholder="제목"></p>
             <p>
@@ -83,7 +58,7 @@ var app = http.createServer(function(request,response){
           </form>
         `, '');
         response.writeHead(200);
-        response.end(template);
+        response.end(html);
       });
     } else if(pathname === '/create_process'){
       var body = '';
@@ -101,10 +76,11 @@ var app = http.createServer(function(request,response){
       });
     } else if(pathname === '/update'){
       fs.readdir('./data','utf8', function(error, filelist){
-        fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
+        var filteredID = path.parse(queryData.id).base;
+        fs.readFile(`data/${filteredID}`, 'utf8', function(err, description){
           var title = queryData.id;
-          var list = templateList(filelist);
-          var template = templateHTML(title, list,
+          var list = template.list(filelist);
+          var html = template.html(title, list,
             `
             <form action="/update_process" method="post">
               <input type="hidden" name="id" value="${title}">
@@ -117,10 +93,11 @@ var app = http.createServer(function(request,response){
               </p>
             </form>
             `,
-            `<a href="/create">글쓰기</a> <a href="/update?id=${title}">수정하기</a>`
+            `<input type="button" value="새 새 글쓰기" onclick="location.href='/create'">
+             <input type="button" value="수정하기" onclick="location.href='/update?id=${title}'">`
           );
           response.writeHead(200);
-          response.end(template);
+          response.end(html);
         });
       });
     } else if(pathname === '/update_process'){
@@ -148,7 +125,8 @@ var app = http.createServer(function(request,response){
       request.on('end', function(){
           var post = qs.parse(body);
           var id = post.id;
-          fs.unlink(`data/${id}`, function(error){
+          var filteredID = path.parse(id).base;
+          fs.unlink(`data/${filteredID}`, function(error){
             response.writeHead(302, {Location: `/`});
             response.end();
           })
