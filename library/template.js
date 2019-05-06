@@ -1,5 +1,5 @@
 var template = {
-  html:function(title, list, body, control){
+  HTML:function(title, list, body, control){
     return `
     <!doctype html>
     <html>

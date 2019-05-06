@@ -4,6 +4,7 @@ var url = require('url');
 var qs = require('querystring');
 var template = require('./library/template.js');
 var path = require('path');
+var sanitizeHtml = require('sanitize-html');
 
 var app = http.createServer(function(request,response){
     var _url = request.url;
@@ -15,7 +16,7 @@ var app = http.createServer(function(request,response){
           var title = '게시판';
           var description = '게시판기능';
           var list = template.list(filelist);
-          var html = template.html(title, list,
+          var html = template.HTML(title, list,
             `<h2>${title}</h2>${description}`,
             `<input type="button" value="새 글쓰기" onclick="location.href='/create'">`
           );
@@ -27,13 +28,17 @@ var app = http.createServer(function(request,response){
           var filteredID = path.parse(queryData.id).base;
           fs.readFile(`data/${filteredID}`, 'utf8', function(err, description){
             var title = queryData.id;
+            var sanitizedTitle = sanitizeHtml(title);
+            var sanitizedDescription = sanitizeHtml(description, {
+              allowedTags:['h1', 'strong']
+            });
             var list = template.list(filelist);
-            var html = template.html(title, list,
-              `<h2>${title}</h2>${description}`,
+            var html = template.HTML(sanitizedTitle, list,
+              `<h2>${sanitizedTitle}</h2>${sanitizedDescription}`,
               `<input type="button" value="새 글쓰기" onclick="location.href='/create'">
-              <input type="button" value="수정하기" onclick="location.href='/update?id=${title}'">
+              <input type="button" value="수정하기" onclick="location.href='/update?id=${sanitizedTitle}'">
               <form action="/delete_process" method="post">
-                <input type="hidden" name="id" value="${title}">
+                <input type="hidden" name="id" value="${sanitizedTitle}">
                 <input type="submit" value="삭제하기">
               </form>`
             );
@@ -46,7 +51,7 @@ var app = http.createServer(function(request,response){
       fs.readdir('./data','utf8', function(error, filelist){
         var title = '게시판';
         var list = template.list(filelist);
-        var html = template.html(title, list, `
+        var html = template.HTML(title, list, `
           <form action="/create_process" method="post">
             <p><input type="text" name="title" placeholder="제목"></p>
             <p>
@@ -80,7 +85,7 @@ var app = http.createServer(function(request,response){
         fs.readFile(`data/${filteredID}`, 'utf8', function(err, description){
           var title = queryData.id;
           var list = template.list(filelist);
-          var html = template.html(title, list,
+          var html = template.HTML(title, list,
             `
             <form action="/update_process" method="post">
               <input type="hidden" name="id" value="${title}">
@@ -93,7 +98,7 @@ var app = http.createServer(function(request,response){
               </p>
             </form>
             `,
-            `<input type="button" value="새 새 글쓰기" onclick="location.href='/create'">
+            `<input type="button" value="새 글쓰기" onclick="location.href='/create'">
              <input type="button" value="수정하기" onclick="location.href='/update?id=${title}'">`
           );
           response.writeHead(200);

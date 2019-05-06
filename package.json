@@ -1,0 +1,22 @@
+{
+  "name": "wap_project",
+  "version": "1.0.0",
+  "description": "Creator Promoting Service",
+  "main": "Free_Borad.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaeyeon2/Creator-Promoting-Service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaeyeon2/Creator-Promoting-Service/issues"
+  },
+  "homepage": "https://github.com/Jaeyeon2/Creator-Promoting-Service#readme",
+  "dependencies": {
+    "sanitize-html": "^1.20.1"
+  }
+}
