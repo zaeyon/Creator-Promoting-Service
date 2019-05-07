@@ -53,9 +53,11 @@ var app = http.createServer(function(request,response){
         var list = template.list(filelist);
         var html = template.HTML(title, list, `
           <form action="/create_process" method="post">
-            <p><input type="text" name="title" placeholder="제목"></p>
+            <p>제목<br>
+            <input type="text" name="title" placeholder="(20자 제한)"></p>
             <p>
-              <textarea name="description" placeholder="내용" cols="100" rows="10"></textarea>
+              내용<br>
+              <textarea name="description" placeholder="비방, 욕, 인신공격, 유언비어, 특정인 및 장애인 비하 등 금지" cols="100" rows="10"></textarea>
             </p>
             <p>
               <input type="submit">
