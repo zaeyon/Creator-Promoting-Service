@@ -12,7 +12,7 @@ var app = http.createServer(function(request,response){
     var pathname = url.parse(_url, true).pathname;
     if(pathname === '/'){
       if(queryData.id === undefined){
-        fs.readdir('./data','utf8', function(error, filelist){
+        fs.readdir('./FBdata','utf8', function(error, filelist){
           var title = '게시판';
           var description = '게시판기능';
           var list = template.list(filelist);
@@ -24,9 +24,9 @@ var app = http.createServer(function(request,response){
           response.end(html);
         });
       } else {
-        fs.readdir('./data','utf8', function(error, filelist){
+        fs.readdir('./FBdata','utf8', function(error, filelist){
           var filteredID = path.parse(queryData.id).base;
-          fs.readFile(`data/${filteredID}`, 'utf8', function(err, description){
+          fs.readFile(`FBdata/${filteredID}`, 'utf8', function(err, description){
             var title = queryData.id;
             var sanitizedTitle = sanitizeHtml(title);
             var sanitizedDescription = sanitizeHtml(description, {
@@ -48,7 +48,7 @@ var app = http.createServer(function(request,response){
         });
       }
     } else if(pathname === '/create'){
-      fs.readdir('./data','utf8', function(error, filelist){
+      fs.readdir('./FBdata','utf8', function(error, filelist){
         var title = '게시판';
         var list = template.list(filelist);
         var html = template.HTML(title, list, `
@@ -76,15 +76,15 @@ var app = http.createServer(function(request,response){
           var post = qs.parse(body);
           var title = post.title;
           var description = post.description;
-          fs.writeFile(`data/${title}`, description, 'utf8', function(err){
+          fs.writeFile(`FBdata/${title}`, description, 'utf8', function(err){
             response.writeHead(302, {Location: `/?id=${qs.escape(title)}`});
             response.end();
           })
       });
     } else if(pathname === '/update'){
-      fs.readdir('./data','utf8', function(error, filelist){
+      fs.readdir('./FBdata','utf8', function(error, filelist){
         var filteredID = path.parse(queryData.id).base;
-        fs.readFile(`data/${filteredID}`, 'utf8', function(err, description){
+        fs.readFile(`FBdata/${filteredID}`, 'utf8', function(err, description){
           var title = queryData.id;
           var list = template.list(filelist);
           var html = template.HTML(title, list,
@@ -117,8 +117,8 @@ var app = http.createServer(function(request,response){
           var id = post.id;
           var title = post.title;
           var description = post.description;
-          fs.rename(`data/${id}`, `data/${title}`, function(error){
-            fs.writeFile(`data/${title}`, description, 'utf8', function(err){
+          fs.rename(`FBdata/${id}`, `FBdata/${title}`, function(error){
+            fs.writeFile(`FBdata/${title}`, description, 'utf8', function(err){
               response.writeHead(302, {Location: `/?id=${qs.escape(title)}`});
               response.end();
             })
@@ -133,7 +133,7 @@ var app = http.createServer(function(request,response){
           var post = qs.parse(body);
           var id = post.id;
           var filteredID = path.parse(id).base;
-          fs.unlink(`data/${filteredID}`, function(error){
+          fs.unlink(`FBdata/${filteredID}`, function(error){
             response.writeHead(302, {Location: `/`});
             response.end();
           })
