@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset = "UTF-8"/>
+    <meta charset = "UTF-8">
     <meta name = "viewport" content ="width=device-width, height=device-height,initial-scale=1">
     <title>홍보 서비스 등록하기</title>  
     
@@ -21,7 +21,7 @@
           $('#createDate').attr('value', curDate);
           
           //파일선택 값이 바뀌면
-          $("#photoInput").change(function() {
+          $("#thumnailInput").change(function() {
               readURL(this);
           });
       });
@@ -32,7 +32,7 @@
               var reader = new FileReader();
               
               reader.onload = function(e) {
-                  $('#photoOutput').attr('src', e.target.result);
+                  $('#thumbnailOutput').attr('src', e.target.result);
               }
               reader.readAsDataURL(input.files[0]);
           }
@@ -67,7 +67,7 @@
         
     <tr>
         <td><label>섬네일 사진</label></td>
-        <td><input type = "file" name = "thumbnail" id = "photoInput"/><br><img src = "" id = "photoOutput" width = "200px"/></td>
+        <td><input type = "file" name = "thumbnail" id = "thumbnailInput"/><br><img src = "" id = "thumbnailOutput" width = "200px"/></td>
     </tr>
     
     </table>

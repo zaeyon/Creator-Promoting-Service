@@ -32,6 +32,9 @@ var fs = require('fs');
 // 클라이언트에서 ajax로 요청 시 CORS(다중 서버 접속)지워 
 var cors = require('cors');
 
+// mime 모듈
+var mime = require('mime');
+
 // 익스프레스 객체 생성
 var app = express();
 
@@ -70,14 +73,16 @@ var storage = multer.diskStorage({
         callback(null, 'thumbnail')
     },
     filename : function (req, file, callback) {
-        callback(null, file.originalname + Date.now())
+        var extension = path.extname(file.originalname);
+        var basename = path.basename(file.originalname, extension);
+        callback(null, file.originalname + Date.now() + extension)
     } 
 });
 
 var upload = multer({
     storage : storage,
     limits : {
-        files : 1,
+        files : 10,
         fileSize : 1024 * 1024 * 1024
     }
 });
@@ -134,6 +139,7 @@ router.route('/process/thumbnail').post(upload.array('thumbnail', 1), function(r
     
     res.writeHead(200, {'Content-Type':'text/html;charset=utf8'});
     res.write('<h1>채널 등록 완료</h1>');
+    res.write('<img src =" /thumbnail/' + filename + '" width = " 200px">');
     res.write('<p>채널 이름 : ' + paramName + '</p>');
     res.write('<p>대표 콘텐츠 : ' + paramContent + '</p>');
     res.write('<p>채널 주소 : ' + paramAddress + '</p>');
