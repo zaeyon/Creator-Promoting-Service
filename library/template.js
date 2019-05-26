@@ -1,3 +1,5 @@
+var sanitizeHtml = require('sanitize-html');
+
 var template = {
   HTML:function(title, list, body, control){
     return `
@@ -17,11 +19,11 @@ var template = {
     `;
   },
 
-  list: function(filelist){
+  list: function(posts){
     var list = '<ol>';
     var i = 0;
-    while(i < filelist.length){
-      list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+    while(i < posts.length){
+      list = list + `<li><a href="/?id=${posts[i].id}">${sanitizeHtml(posts[i].title)}</a></li>`;
       i = i + 1;
     }
     list = list+'</ol>';
