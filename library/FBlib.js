@@ -3,6 +3,11 @@ const template = require('./template.js');
 const url = require('url');
 const qs = require('querystring');
 const sanitizeHtml = require('sanitize-html');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 exports.main = function(request, response){
     db.query(`SELECT * FROM posts`, function(error, posts){
@@ -102,7 +107,7 @@ exports.postpage = function(request, response){
           }
           var title = post[0].title;
           var description = post[0].description;
-          var list = template.list(posts);
+          var list = '<h2>글 목록</h2>' + template.list(posts);
           var name = '';
           if(post[0].name === null){
               name = '익명';
@@ -111,7 +116,7 @@ exports.postpage = function(request, response){
             name = sanitizeHtml(post[0].name);
           }
           var html = template.HTML(title, list,
-            `<h2>${sanitizeHtml(title)}</h2><h3>작성자: ${name}</h3>${sanitizeHtml(description)}<div><a href="#top">위로가기</a></div>`,
+            `<h2>제목: ${sanitizeHtml(title)}</h2><h3>작성자: ${name}</h3> 내용: ${sanitizeHtml(description)} <div><a href="#top">위로가기</a></div>`,
             `<input type="button" value="새 글쓰기" onclick="location.href='/create'">
             <input type="button" value="수정하기" onclick="location.href='/update?id=${queryData.id}'">
             <form action="/delete_process" method="post">
@@ -143,8 +148,7 @@ exports.create = function(request, response){
           </form>`,
           ``
         );
-        response.writeHead(200);
-        response.end(html);
+        response.send(html);
       });
 }
 
@@ -155,13 +159,14 @@ exports.create_process = function(request, response){
       });
       request.on('end', function(){
           var post = qs.parse(body);
+          var post1 = request.body;
+          console.log(post1);
           db.query(`
             INSERT INTO posts (title, description, created, author_id) VALUES(?, ?, NOW(), ?)`, [post.title, post.description, 1], function(error, result){
               if(error){
                 throw error;
               }
-              response.writeHead(302, {Location: `/?id=${result.insertId}`});
-              response.end();
+              response.redirect(`/?id=${result.insertId}`);
             });
       });
 }
@@ -192,8 +197,7 @@ exports.update = function(request, response){
             `,
             `<input type="button" value="새 글쓰기" onclick="location.href='/create'">`
           );
-        response.writeHead(200);
-        response.end(html);
+        response.send(html);
         });
       });
 }
@@ -206,8 +210,7 @@ exports.update_process = function(request, response){
       request.on('end', function(){
           var post = qs.parse(body);
           db.query('UPDATE posts SET title=?, description=?, author_id=? WHERE id=?', [post.title, post.description, post.author_id, post.id], function(error, result){
-            response.writeHead(302, {Location: `/?id=${post.id}`});
-            response.end();
+          response.redirect(`/?id=${post.id}`);
           });
       });
 }
@@ -223,8 +226,7 @@ exports.delete_process = function(request, response){
             if(error){
               throw error;
             }
-            response.writeHead(302, {Location: `/`});
-            response.end();
+            response.redirect('/');
           });
       });
 }

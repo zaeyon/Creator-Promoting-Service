@@ -44,6 +44,6 @@ app.post('/delete_process', function(request, response){
   fb.delete_process(request, response);
 });
 
-app.listen(portnuber, function() {
+app.listen(portnumber, function() {
   console.log(`Example app listening on port ${portnumber}`)
 });
