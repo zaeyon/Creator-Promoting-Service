@@ -1,30 +1,49 @@
-var http = require('http');
-var url = require('url');
-var fb = require('../library/FBlib.js');
+const url = require('url');
+const fb = require('../library/FBlib.js');
+const express = require('express');
+const app = express();
+const portnumber = 3000;
 
-var app = http.createServer(function(request,response){
-    var _url = request.url;
-    var queryData = url.parse(_url, true).query;
-    var pathname = url.parse(_url, true).pathname;
-    if(pathname === '/'){
-      if(queryData.id === undefined){
-        fb.main(request, response);
-      } else {
-        fb.postpage(request, response);
-      }
-    } else if(pathname === '/create'){
-        fb.create(request, response);
-    } else if(pathname === '/create_process'){
-        fb.create_process(request, response)
-    } else if(pathname === '/update'){
-        fb.update(request, response);
-    } else if(pathname === '/update_process'){
-        fb.update_process(request, response);
-    } else if(pathname === '/delete_process'){
-        fb.delete_process(request, response);
-    } else {
-      response.writeHead(404);
-      response.end('Not found');
-    }
+app.get('/', function(request, response){
+  if(url.parse(request.url, true).query.id === undefined){
+    fb.main(request, response);
+  } else {
+    fb.postpage(request, response);
+  }
+}); 
+
+app.get('/notice', function(request, response){
+  if(url.parse(request.url, true).query.noticeid === undefined){
+    fb.notice_main(request, response);
+  } else {
+    fb.notice_post(request, response);
+  }
 });
-app.listen(3000);
+
+app.get('/create', function(request, response){
+  fb.create(request, response);
+});
+
+app.post('/create_process', function(request, response){
+  fb.create_process(request, response);
+});
+
+app.get('/update', function(request, response){
+  fb.update(request, response);
+});
+
+app.post('/update_process', function(request, response){
+  fb.update_process(request, response);
+});
+
+app.get('/delete', function(request, response){
+  fb.delete(request, response);
+});
+
+app.post('/delete_process', function(request, response){
+  fb.delete_process(request, response);
+});
+
+app.listen(portnuber, function() {
+  console.log(`Example app listening on port ${portnumber}`)
+});
