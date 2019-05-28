@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset = "UTF-8">
+    <style type="text/css">
+  <title>mypage</title>
+
+/* 레이아웃 */
+#wrap{}
+#header{width : 100%; height : 40%;}
+#contents{float : left; width : 100%; height : 800PX; }
+#footer{float : left; width : 100%; height : 70px;}
+
+
+#header{ background-color: white;}
+#contents{background-color:#F6F6F6; border-top: solid 1px #D5D5D5; border-bottom: solid 1px #D5D5D5;}
+#footer{background: white;}
+
+/* 헤드 */
+.header-tit h1{ font-family : Arial; color :#353535;
+                        font-size : 39px; margin-left: 40px;}
+/* 컨텐츠 박스 */
+.cont{font-family: Arial;}
+.cont .box1{float: left; background-color: white; width : 400px; height : 280px;
+margin-left: 180px; margin-top: 60px; margin-right: 30px;  border : solid 1px #D5D5D5; }
+.cont .box2{float: left;background-color: white; width : 400px; height : 280px;
+margin-top: 60px; margin-left: 30px;  border : solid 1px #D5D5D5;}
+.cont .box3{float: left;background-color : white; width : 400px; height : 280px;
+margin-left: 180px;  margin-top: 60px; margin-right: 30px;  border : solid 1px #D5D5D5;}
+.cont .box4{float: left; background-color: white; width : 400px; height: 280px;
+margin-top: 60px;margin-left: 30px;  border : solid 1px #D5D5D5;}
+.cont h2 a{text-decoration: none; display : inline-block; font-size: 17px; color : #4C4C4C;padding-left: 20px; }
+.cont .btn{width : 80px; height : 35px; margin-top: 30px; margin-left: 33px;  font-size: 15px;
+  border-radius: 3px; border : solid 1px; background-color: #E5A102; color : white;}
+
+/* 컨텐츠 글 */
+.cont li{list-style-type: none; font-size: 16px; padding : 10px 25px; text-decoration: none;  color : #4C4C4C; }
+.cont li a{display: inline-block; font-size: 16px;  text-decoration: none;  color : #4C4C4C; }
+.cont p{font-size: 13px; padding-left: 23px; color: #4C4C4C;}
+
+/* 푸터 */
+.footer{ font-size: 12px; text-align :center; display: inline;}
+.footer li{display : inline; padding : 0px 0px 20px 20px;}
+.footer li a{text-decoration: none; color : black;}
+
+
+</style>
+</head>
+
+<body>
+<div id = "wrap">
+<div id = "header">
+  <div class = "header-tit">
+<h1>Mypage</h1>
+</div>
+</div>
+<!--header-->
+
+<div id= "contents">
+<div class = "cont">
+
+<div class = "box1">
+  <h2><a href = #>내 채널</a></h2>
+  <p>내가 올린 영상과 내가 작성한 댓글을 확인할 수 있습니다</p>
+  <li><a href = "#">- 내 영상 확인</a></li>
+  <li><a href = "#">- 내 댓글 확인</a></li>
+</div>
+
+<div class = "box2">
+  <h2><a href="#">구독 채널</a></h2>
+  <p>내가 좋아하는 크리에이터의 영상을 확인할 수 있습니다</p>
+  <li>- 내가 좋아요한 크리에이터</li>
+  <button class = "btn" type= "submit">확인</button>
+
+</div>
+
+<div class = "box3">
+  <h2><a href="#">내 채널 수정</a></h2>
+  <p>나의 채널정보를 수정할 수 있습니다</p>
+  <li>- 대표 이미지 변경</li>
+  <li>- 채널 소개 및 이름 변경</li>
+  <button class = "btn" type= "submit">수정</button>
+
+</div>
+
+<div class = "box4">
+  <h2><a href="#">개인정보 변경</a></h2>
+  <p>비밀번호 및 닉네임을 변경할 수 있습니다</p>
+  <li>- 비밀번호 변경</li>
+  <li>- 닉네임 변경</li>
+  <button class = "btn" type= "submit">변경</button>
+
+</div>
+</div>
+</div>
+<!--contents-->
+
+<div id = "footer">
+  <div class = "container">
+  <div class = "footer">
+  <ul>
+    <li><a href ="#">사이트 도움말</a></li>
+    <li><a href ="#">사이트 이용약관</a></li>
+    <li><a href ="#">사이트 운영규칙</a></li>
+    <li><a href = "#">개인정보</a></li>
+  </ul>
+  <address>
+    Copyright&copy;wap5.co.kr All Right Rederved
+  </address>
+  </div>
+  </div>
+</div>
+<!--footer-->
+
+  </div>
+  <!--wrap-->
+
+    </body>
+    </html>

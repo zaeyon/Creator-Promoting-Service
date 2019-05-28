@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <style type="text/css">
+
+#wrap{}
+#contents{height : 950px;}
+#prom_form{background-color: white;}
+#footer{height : 70px;}
+
+.prom_header{}
+.prom_header h1 {font-family : Arial; color :#353535; padding-top: 80px; padding-bottom: 20px;
+                        font-size : 39px; text-align: center;}
+.prom_contents {text-align: center;}
+
+.prom_contents .ch_name .name{width : 250px; height : 40px; margin-bottom: 25px; font-size: 15px;
+  border-radius: 3px; border : solid 0.8px  #4C4C4C; }
+.prom_contents .ch_ad .ad{width : 250px; height : 40px; margin-bottom: 25px; font-size: 15px;
+  border-radius: 3px; border : solid 0.8px  #4C4C4C;}
+.prom_contents .ch_rep .rep{width : 250px; height :40px; margin-bottom: 25px; font-size: 15px;
+  border-radius: 3px; border : solid 0.8px  #4C4C4C;}
+.prom_contents .ch_plat .plat{width : 250px; height : 40px; margin-bottom: 25px; font-size: 15px;
+  border-radius: 3px; border : solid 0.8px #4C4C4C;}
+.prom_contents .ch_thum{padding : 10px 20px 0 10px; }
+.prom_contents .ch_video{padding : 10px 20px 0 10px; }
+
+.prom_contents h2{font-size : 14px; color: #4C4C4C}
+.prom_contents .register{width : 250px; height : 50px;  margin-bottom: 10px; font-size: 15px;
+  border-radius: 3px; border : solid 1px; background-color: #E5A102; color : white; }
+
+.thum{margin-left: 60px;}
+.video{margin-left: 60px;}
+/* footer */
+.footer{ font-size: 12px; text-align :center; display: block; border-top: solid 1px #D5D5D5;}
+.footer li{display : inline; padding : 0px 0px 20px 20px;}
+.footer li a{text-decoration: none; color : black;}
+
+</style>
+   </head>
+
+   <body>
+ <div id = "wrap">
+<div id = "prom_form">
+     <div class = "prom_header">
+     <h1>홍보 서비스 등록</h1>
+    </div>
+
+
+<div id = "contents">
+  <div class = "prom_contents">
+     <form method = "post" enctype = "multipart/form-data" action = "/process/thumbnail">
+
+
+  <h2><label for = "name">채널 이름</label></h2>
+  <div class = "ch_name">
+  <input type = "text" name = "name" id = "name" class = "name">
+</div>
+
+   <h2><label for = "adress">채널 주소</label></h2>
+   <div class = "ch_ad">
+   <input type = "text" name = "address"  id = "adrress"class = "ad">
+ </div>
+
+   <h2><label for ="representation">대표 콘텐츠</label></h2>
+   <div class = "ch_rep">
+   <input type = "text" name = "content" id= "representation" class = "rep">
+</div>
+
+    <h2><label for = "platform">대표 플랫폼</label></h2>
+    <div class = "ch_plat">
+    <input type = "text" name = "platform" id = "platform" class = "plat">
+</div>
+<div class = "ch_intro">
+    <h2><label for = "introduction">채널 소개</label></h2>
+    <textarea name = "introduction" style = "width:18rem;height:11rem;" id = "introduction"class = "intro"></textarea>
+</div>
+<div class = "ch_thum">
+    <h2><label for = "thumbnailInput">섬네일 사진</label></h2>
+    <input type = "file" name = "thumbnail" id = "thumbnailInput" class = "thum"/><br><img src = "" id = "thumbnailOutput" width = "200px" />
+</div>
+
+
+ <input type = "submit" value = "등록하기" name = "register" class = "register">
+</form>
+</div>
+</div>
+</div>
+
+<div id = "footer">
+<div class = "container">
+<div class = "footer">
+<ul>
+  <li><a href ="#">사이트 도움말</a></li>
+  <li><a href ="#">사이트 이용약관</a></li>
+  <li><a href ="#">사이트 운영규칙</a></li>
+  <li><a href = "#">개인정보</a></li>
+</ul>
+<address>
+  Copyright&copy;wap5.co.kr All Right Rederved
+</address>
+</div>
+</div>
+</div>
+</div>
+
+
+     </body>
+     </html>
