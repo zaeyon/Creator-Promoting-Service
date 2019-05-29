@@ -96,7 +96,7 @@ router.route('/process/login').post(function(req, res) {
     
                 res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
                 res.write('<h1>로그인 성공</h1>');
-                res.write('<div><p>사용자 아이디 : ' + paramId +'</p></div');
+                res.write('<div><p>사용자 아이디 : ' + paramId +'</p></div>');
                 res.write('<div><p>사용자 닉네임 : ' + usernickname + '</p></div>');
                 res.write("<br><br><a href = '/css/페이지.html'>메인 페이지가기</a>");
                 res.end();
