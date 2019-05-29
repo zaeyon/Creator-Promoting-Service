@@ -17,7 +17,7 @@ app.get('/notice', function(request, response){
     fb.notice_main(request, response);
   } else {
     fb.notice_post(request, response);
-  }
+  }1
 });
 
 app.get('/create', function(request, response){

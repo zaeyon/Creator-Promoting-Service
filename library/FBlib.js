@@ -6,8 +6,10 @@ const sanitizeHtml = require('sanitize-html');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const compression = require('compression');
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(compression());
 
 exports.main = function(request, response){
     db.query(`SELECT * FROM posts`, function(error, posts){
@@ -29,32 +31,10 @@ exports.main = function(request, response){
 exports.notice_main = function(request, response){
   var fs = require('fs');
 
-  fs.readdir('./notice','utf8', function(error, filelist){
-    var list = '<ul>';
-      {
-      let i = 0;
-    while(i < filelist.length){
-      list = list + `<li><a href="?noticeid=${filelist[i]}">${filelist[i]}</a></li>`;
-      i = i + 1;
-      } 
-    }
-      list = list+'</ul>';
-
-        var notice = `
-        <!doctype html>
-        <html>
-        <head>
-          <title>공지사항</title>
-          <meta charset="utf-8">
-        </head>
-        <body>
-          <a href="/">돌아가기</a>
-          <h1>공지사항</h1>
-          ${list}
-        </body>
-        </html>
-        `
-        response.send(notice);
+  fs.readdir('../notice','utf8', function(error, filelist){
+    var list = template.list_N(filelist);
+    var notice = template.HTML_N(list, '');
+    response.send(notice);
   });
 }
 
@@ -62,34 +42,11 @@ exports.notice_main = function(request, response){
   var fs = require('fs');
   var _url = request.url;
   var queryData = url.parse(_url, true).query;
-  
-  fs.readdir('./notice','utf8', function(error, filelist){
-    var list = '<ul>';
-      {
-      let i = 0;
-    while(i < filelist.length){
-      list = list + `<li><a href="?noticeid=${filelist[i]}">${filelist[i]}</a></li>`;
-      i = i + 1;
-      }   
-    }
-      list = list+'</ul>';
 
-      fs.readFile(`notice/${queryData.noticeid}`, 'utf8', function(error2, description){
-        var notice = `
-        <!doctype html>
-        <html>
-        <head>
-          <title>공지사항</title>
-          <meta charset="utf-8">
-        </head>
-        <body>
-          <a href="/">돌아가기</a>
-          <h1>공지사항</h1>
-          ${list}
-          ${description}
-        </body>
-        </html>
-        `
+  fs.readdir('../notice','utf8', function(error, filelist){
+    var list = template.list_N(filelist);
+      fs.readFile(`../notice/${queryData.noticeid}`, 'utf8', function(error2, description){
+        var notice = template.HTML_N(list, description);
         response.send(notice);
     });
   });
@@ -159,8 +116,8 @@ exports.create_process = function(request, response){
       });
       request.on('end', function(){
           var post = qs.parse(body);
-          var post1 = request.body;
-          console.log(post1);
+          //var post = request.body;
+          //미들웨어 mysql이랑 호환 어케하는지 알아봐야함 ;
           db.query(`
             INSERT INTO posts (title, description, created, author_id) VALUES(?, ?, NOW(), ?)`, [post.title, post.description, 1], function(error, result){
               if(error){
