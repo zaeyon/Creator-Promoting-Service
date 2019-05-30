@@ -1,7 +1,7 @@
 var sanitizeHtml = require('sanitize-html');
 
 var template = {
-  HTML:function(title, list, body, control){
+  HTML:function(title, list, body, control, comment=''){
     return `
     <!doctype html>
     <html>
@@ -14,12 +14,13 @@ var template = {
       ${list}
       ${control}
       ${body}
+      ${comment}
     </body>
     </html>
     `;
   },
 
-  HTML_N:function(list, description){
+  HTML_N:function(list,title, description){
     return `
     <!doctype html>
     <html>
@@ -31,7 +32,8 @@ var template = {
       <a href="/">돌아가기</a>
       <h1>공지사항</h1>
       ${list}
-      ${description}
+      제목: ${title}
+      <p>내용: ${description}</p>
     </body>
     </html>
     `
@@ -53,7 +55,7 @@ var template = {
       {
       let i = 0;
     while(i < filelist.length){
-      list = list + `<li><a href="?noticeid=${filelist[i]}">${filelist[i]}</a></li>`;
+      list = list + `<li><a href="?notice_title=${filelist[i]}">${filelist[i]}</a></li>`;
       i = i + 1;
       }   
     }

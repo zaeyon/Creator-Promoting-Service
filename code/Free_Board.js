@@ -44,6 +44,10 @@ app.post('/delete_process', function(request, response){
   fb.delete_process(request, response);
 });
 
+app.use(function (request, response, next) {
+  response.status(404).send("요청하신 페이지를 찾을 수 없습니다.");
+})
+
 app.listen(portnumber, function() {
   console.log(`Example app listening on port ${portnumber}`)
 });

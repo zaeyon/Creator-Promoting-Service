@@ -7,7 +7,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const compression = require('compression');
+const helmet = require('helmet');
 
+app.use(helmet());
+app.use(express.static('public'));// public 디렉토리 안에서 정적인 파일을 찾음
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression());
 
@@ -31,9 +34,12 @@ exports.main = function(request, response){
 exports.notice_main = function(request, response){
   var fs = require('fs');
 
-  fs.readdir('../notice','utf8', function(error, filelist){
+  fs.readdir('./notice','utf8', function(error, filelist){
+    if(error){
+      throw error;
+    }
     var list = template.list_N(filelist);
-    var notice = template.HTML_N(list, '');
+    var notice = template.HTML_N(list, '','');
     response.send(notice);
   });
 }
@@ -43,10 +49,17 @@ exports.notice_main = function(request, response){
   var _url = request.url;
   var queryData = url.parse(_url, true).query;
 
-  fs.readdir('../notice','utf8', function(error, filelist){
+  fs.readdir('./notice','utf8', function(error, filelist){
+    if(error){
+      throw error;
+    }
     var list = template.list_N(filelist);
-      fs.readFile(`../notice/${queryData.noticeid}`, 'utf8', function(error2, description){
-        var notice = template.HTML_N(list, description);
+    title = queryData.notice_title
+      fs.readFile(`./notice/${title}`, 'utf8', function(error2, description){
+        if(error2){
+          throw error;
+        }
+        var notice = template.HTML_N(list, title, description);
         response.send(notice);
     });
   });
