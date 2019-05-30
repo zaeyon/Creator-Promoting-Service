@@ -23,9 +23,8 @@ exports.main = function(request, response){
         </ul>`;
         var list = template.list(posts);
         var html = template.HTML(title, description,
-          `<h2>게시글 목록</h2>${list}
-          <input type="button" value="새 글쓰기" onclick="location.href='/create'">`,
-          ''
+          `<h2>게시글 목록</h2>${list}`,
+          `<input type="button" value="새 글쓰기" onclick="location.href='/create'">`
         );
         response.send(html);
       });
@@ -38,9 +37,18 @@ exports.notice_main = function(request, response){
     if(error){
       throw error;
     }
-    var list = template.list_N(filelist);
-    var notice = template.HTML_N(list, '','');
-    response.send(notice);
+    var list = `<!doctype html>
+    <html>
+    <head>
+      <title>공지사항</title>
+      <meta charset="utf-8">
+    </head>
+    <body>
+    <a href="/">돌아가기</a>
+    <h1>공지사항</h1>
+    ${template.list_N(filelist)}`
+
+    response.send(list);
   });
 }
 
@@ -75,26 +83,38 @@ exports.postpage = function(request, response){
           if(error2){ 
             throw error;
           }
-          var title = post[0].title;
-          var description = post[0].description;
-          var list = '<h2>글 목록</h2>' + template.list(posts);
-          var name = '';
-          if(post[0].name === null){
-              name = '익명';
-          }
-          else{
-            name = sanitizeHtml(post[0].name);
-          }
-          var html = template.HTML(title, list,
-            `<h2>제목: ${sanitizeHtml(title)}</h2><h3>작성자: ${name}</h3> 내용: ${sanitizeHtml(description)} <div><a href="#top">위로가기</a></div>`,
-            `<input type="button" value="새 글쓰기" onclick="location.href='/create'">
-            <input type="button" value="수정하기" onclick="location.href='/update?id=${queryData.id}'">
-            <form action="/delete_process" method="post">
-              <input type="hidden" name="id" value="${queryData.id}">
-              <input type="submit" value="삭제하기">
-            </form>`
-          );
-        response.send(html);
+          db.query(`SELECT comments.id, comments.description, comments.created, comments.post_id, comments.author_id, author.name FROM posts LEFT JOIN comments ON comments.post_id = posts.id LEFT JOIN author ON author.id = comments.author_id WHERE posts.id=?`,[queryData.id],function(error3, comments){
+            if(error3){ 
+              throw error;
+            }
+            var title = post[0].title;
+            var description = post[0].description;
+            var list = '<h2>글 목록</h2>' + template.list(posts);
+            var time = post[0].created;
+            var comment = template.comment(comments);
+            var name = '';
+            if(post[0].name === null){
+                name = '익명';
+            }
+            else{
+              name = sanitizeHtml(post[0].name);
+            }
+            var html = template.HTML(title, list,
+              `<h2>제목: ${sanitizeHtml(title)}</h2><h3>작성자: ${name},<br> 작성일: ${time}<br>내용: ${sanitizeHtml(description)} </h3> `,
+              `<input type="button" value="새 글쓰기" onclick="location.href='/create'">
+              <input type="button" value="수정하기" onclick="location.href='/update?id=${queryData.id}'">
+              <form action="/delete_process" method="post">
+                <input type="hidden" name="id" value="${queryData.id}">
+                <input type="submit" value="삭제하기">
+              </form>`,`
+              <form action="/comment_create_process" method="post">
+                  <input type="hidden" name="id" value="${sanitizeHtml(queryData.id)}">
+                  <p>댓글<br><textarea name="comment" placeholder="네티켓을 지킵시다. ^^" cols=200% rows="4"></textarea></p>
+                  <input type="submit" value="댓글등록">
+              </form>`,comment              
+            );
+          response.send(html);
+          });          
         });
       });
 }
@@ -107,7 +127,7 @@ exports.create = function(request, response){
           `
           <form action="/create_process" method="post">
             <p>제목<br>
-            <input type="text" name="title" placeholder="(20자 제한)"></p>
+            <input type="text" name="title" placeholder="(20자 제한)" maxlength="20"></p>
             <p>
               내용<br>
               <textarea name="description" placeholder="비방, 욕, 인신공격, 유언비어, 특정인 및 장애인 비하 등 금지" cols="100" rows="10"></textarea>
@@ -115,8 +135,7 @@ exports.create = function(request, response){
             <p>
               <input type="submit">
             </p>
-          </form>`,
-          ``
+          </form>`
         );
         response.send(html);
       });
@@ -198,5 +217,39 @@ exports.delete_process = function(request, response){
             }
             response.redirect('/');
           });
+      });
+}
+
+exports.comment_create_process = function(request, response){
+  var body = '';
+    request.on('data', function(data){
+        body = body + data;
+    });
+    request.on('end', function(){
+        var post = qs.parse(body);
+        db.query(`
+            INSERT INTO comments (description, created, author_id, post_id) VALUES(?, NOW(), ?, ?)`, [post.comment, 1, post.id], function(error, result){
+              if(error){
+                throw error;
+              }
+              response.redirect(`/?id=${post.id}`);
+            });
+    });
+}
+
+exports.comment_delete_process = function(request, response){
+  var body = '';
+      request.on('data', function(data){
+          body = body + data;
+      });
+      request.on('end', function(){
+        var post = qs.parse(body);
+        console.log(post.id)
+        db.query('DELETE FROM comments WHERE id = ?', [post.id], function(error, result){
+          if(error){
+            throw error;
+          }
+          response.redirect(`/?id=${post.post_id}`);
+        });
       });
 }

@@ -36,12 +36,17 @@ app.post('/update_process', function(request, response){
   fb.update_process(request, response);
 });
 
-app.get('/delete', function(request, response){
-  fb.delete(request, response);
-});
-
 app.post('/delete_process', function(request, response){
   fb.delete_process(request, response);
+});
+
+app.post('/comment_create_process', function(request, response){
+  fb.comment_create_process(request, response);
+});
+
+app.post('/comment_delete_process', function(request, response){
+  console.log(11)
+  fb.comment_delete_process(request, response);
 });
 
 app.use(function (request, response, next) {

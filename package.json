@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Jaeyeon2/Creator-Promoting-Service#readme",
   "dependencies": {
     "ajax": "0.0.4",
+    "asyn": "0.0.1",
+    "async": "^3.0.1",
     "body": "^5.1.0",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
