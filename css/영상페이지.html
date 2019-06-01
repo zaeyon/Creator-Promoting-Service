@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <link href="https://fonts.googleapis.com/css?family=Ewert" rel="stylesheet">
+ <title>CPS-방문을 환영합니다.</title>
+
+ <!-- style
+   <link rel="stylesheet" type="text/css" href="css/reset.css">
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   -->
+
+   <link rel="stylesheet" type="text/css" href="css/slick.css">
+
+ <style>
+.embed-youtube {
+  position: relative;
+  width:100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.embed-yotubue iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* 레이아웃 */
+   #wap{width : 1200px; height : 1000px; margin : 0 auto;}
+   #header{width : 1250px; height : 100px;}
+   #side{float : left; width : 180px; height : 810px;}
+   #contents{float : left; width : 800px; height : 540px;}
+   #rside{float :left; width : 160px; height : 810px;}
+   #footer{width : 1090px; height : 100px;}
+   #contents1{float:left; width:800px; height:100px;margin-top: 20px; background:#white;border: solid #6a6a6a;border-left:0px;border-right:0px;}
+   #contents2{float:left; width:800px; height:150px;margin-top: 20px; background: #white;border: solid #6a6a6a;border-left:0px;border-right:0px;}
+    #cont_ban {background-color: #dceff7;}
+/* 컨테이너 */
+.container {width : 1250px; height : inherit; margin: 0 auto;}
+
+/* 레이아웃 */
+#header{background-color: #80FF00;}
+#side{background-color: white;}
+#cont_cont {background-color: #F6F6F6;}
+#cont_img{background-color:  : white;}
+#rside{background-color: black;}
+#footer {background-color : white;}
+
+/* 헤더 */
+.header {}
+.header .header-menu {text-align : right;}
+.header .header-menu a {display : inline-block; color : #4C4C4C; text-decoration : none;
+  padding : 4px 0px 0px 3px; margin-right : 10px;}
+.header .header-menu a:hover {text-decoration: underline;}
+.header .header-title {}
+.header .header-title h1{ display : inline-block; font-family :'Ewert', cursive, serif;
+   font-size: 3rem; color : #4C4C4C;
+                        font-size : 39px; margin-left : 120px; margin-top : 1px;}
+
+.header .search{position: absolute; left : 590px; top : 40px;}
+.header .search .name{height : 33px; width : 200px; border-radius : 5px; border: solid #6a6a6a; padding : 0px 6px;}
+.header .search input[type=submit]{background-color:#6a6a6a; color :white; font-size: 15px; border: solid #6a6a6a;
+                  border-radius: 5px; padding : 4px 6px;}
+/*사이드바*/
+input[id="menuicon"] {display:none;}
+input[id="menuicon"] + label {display:block;margin:30px;width:60px;height:50px;position:relative;cursor:pointer;}
+input[id="menuicon"] + label span {display:block;position:absolute;width:100%;height:5px;border-radius:30px;background:#000;transition:all .35s;}
+input[id="menuicon"] + label span:nth-child(1) {top:0;}
+input[id="menuicon"] + label span:nth-child(2) {top:50%;transform:translateY(-50%);} /* �����ϰ� ������ �� �ִ� style top:calc(50% - 2.5px); margin-top:-2.5px;*/
+input[id="menuicon"] + label span:nth-child(3) {bottom:0;}
+input[id="menuicon"]:checked + label {z-index:1;}
+input[id="menuicon"]:checked + label span {background:black;}
+input[id="menuicon"]:checked + label span:nth-child(1) {top:50%;transform:translateY(-50%) rotate(45deg);}
+input[id="menuicon"]:checked + label span:nth-child(2) {opacity:0;}
+input[id="menuicon"]:checked + label span:nth-child(3) {bottom:50%;transform:translateY(50%) rotate(-45deg);}
+div[class="sidebar"] {width:160px;height:100%;background:white;position:absolute;top:-1;left:-300px;z-index:1;transition:all .35s;}
+input[id="menuicon"]:checked + label + div {left:0;}
+
+
+
+
+
+
+/* 사이드 */
+.side_menu {list-style-type : none; margin : 0px; padding : 0px; width : 160px;
+            height : 835px; background-color : white; border-right: solid #D5D5D5 1px;}
+.side_menu li a {text-decoration : none; display:block; padding : 10px 20px; color : #000;}
+.side_menu li a.active { background-color : #8C8C8C; color : white;}
+.side_menu li a:hover{ background-color: #dbdbdb; color : white;}
+.side_menu .scroll {body style = "overflow-x:auto; overflow-y:hidden"}
+
+
+.ban {position: relative; padding: 24px 0 40px;}
+        .ban .slick-prev {position: absolute; left: -70px; top: 80px; width: 43px; height: 43px; background: url(imge/Left_arrow.png) -150px 0; text-indent: -9999px;}
+        .ban .slick-next {position: absolute; right: -70px; top: 80px; width: 43px; height: 43px; background: url(imge/Right_arrow.png) -150px -43px; text-indent: -9999px;}
+        .ban .slick-prev:hover {background-position: -193px 0;}
+        .ban .slick-next:hover {background-position: -193px -43px;}
+        .ban img {border: 4px solid #dcdcdc; width: 20%; box-sizing: border-box;}
+        .ban img:hover {border-color: #98bcdc;}
+        .slick-slide {margin: 10px;}
+        .slick-dots{position: absolute; bottom: 15px; display: block; width: 100%; text-align: center;}
+        .slick-dots li{position: relative; display: inline-block; width: 15px; height: 15px; margin: 5px;}
+        .slick-dots li button {font-size: 0; line-height: 0; display: block; width: 15px; height: 15px; cursor: pointer; background: #5dbfeb; border-radius: 50%;}
+        .slick-dots li.slick-active button {background: #2B91C8;}
+/* 컨텐츠 레이아웃 */
+.cont{overflow : hidden; border-top: solid 1px #D5D5D5; border-left : solid 1px #D5D5D5; border-bottom: solid 1px #D5D5D5;}
+.cont .box{float : left; background-color: white; margin : 0px 0px 45px 45px;}
+.cont .cont1{width : 1000px; height: 330px; margin-top : 35px; margin-bottom: 5px; border : solid 1px #EAEAEA;}
+.cont .cont2{width : 1000px; height : 330px; margin-top : 5px; margin-bottom : 35px; border : solid 1px #EAEAEA;}
+.cont .box .box_tit{padding-left : 28px; padding-bottom: 5px; font-size : 15px; border-bottom : solid 2px #8C8C8C;}
+/* 컨텐츠 이미지 */
+.cont .box .box_img {position : relative; padding : 2px 62px;}
+.cont .box .box_img .prev{position: absolute; left : 10px; top : 10px;}
+.cont .box .box_img .next{position: absolute; right : 10px; top : 10px;}
+.box .box_img ul{ list-style-type: none; display: inline-block; }
+.box .box_img ul li{ float : left; margin : -47px 5px -16px -16px;}
+.box .box_img ul li : last-child{text-align: right;}
+.box .box_img ul li.img1{text-align: left;}
+.box .box_img ul li.img2{}
+.box .box_img ul li.img3{}
+.box .box_img ul li.img4{text-align: right;}
+
+
+/* 푸터 */
+.footer{ font-size: 12px; text-align :center;display: inline; border-left : solid 1px #D5D5D5;}
+.footer li{display : inline; padding : 0px 0px 20px 20px;}
+.footer li a{text-decoration: none; color : black;}
+
+
+
+   </style>
+
+
+
+</head>
+
+
+<body>
+
+
+<div id= "wap">
+<div id ="header">
+  <img src ="image\logo.png" height="100" alt="logo" title="logo">
+  <style>
+  img {
+    float : left;
+    margin : 0px;
+  }
+  </style>
+<div class = "container">
+  <div class = "header">
+    <div class = "header-menu">
+      <a href="#Login">Login</a>
+      <a href ="#Mypage">Mypage</a>
+    </div>
+    <!-- header-menu-->
+  <div class = "header-title">
+  <a href="#home"><h1>CP service</h1></a>
+  </div>
+  <!-- header-title -->
+  <div class = "search">
+  <input class = "name" type = "name" value = "Input creator name" button = "확인" />
+  	    <input type = "submit" value = "확인" />
+      </div>
+      <!-- header search -->
+  </div>
+</div>
+</div>
+<!-- //header -->
+
+
+<div id ="side">
+<div class = "side_menu">
+
+
+    <div>
+      <input type="checkbox" id="menuicon">
+      <label for="menuicon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <div class="sidebar">
+
+
+
+  <li><a class = "active" href = "#home">home</a></li>
+  <li><a href = "#popularity">인기 크리에이터</a></li>
+  <li><a href = "#recommemdation">추천 크리에이터</a></li>
+  <hr class = "garo">
+  <li><a href = "#game">게임</a></li>
+  <li><a href = "#mukbang">먹방</a></li>
+  <li><a href = "#humor">유머</a></li>
+  <li><a href = "#music">음악</a></li>
+  <li><a href = "#travel">여행</a></li>
+  <li><a href = "#movie">영화</a></li>
+  <li><a href = "#interview">인터뷰</a></li>
+  <li><a href = "#news">뉴스</a></li>
+  <li><a href = "#education">교육</a></li>
+  <li><a href = "#theothers">기타</a></li>
+  <li><a href = "#beauty">Beauty</a></li>
+  <li><a href = "#ASMR">ASMR</a></li>
+  <li><a href = "#v-log">V-log</a></li>
+  <li><a href = "#bulletin board">자유게시판</a></li>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- //side -->
+
+<div id = "contents">
+<div id = "cont_cont">
+  <div class = "containr">
+
+
+
+<!-- 박스 이미지 -->
+<span class="embed-youtube">
+  <iframe width="800" height="400" src="https://www.youtube.com/embed/yY6XnbWnK4o" frameborder="0" allow="accelerometer; autoplay; encrypted-media;display: none; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</iframe>
+</div>
+
+<div class = "box cont2">
+<div class = "ban">
+
+
+  <div><a href="#"><img src="image\Thumbnail.png" alt="웹 표준 지침서 보기"></a></div>
+  <div><a href="#"><img src="image\Thumbnail.png" alt="CSS 버튼 만들기"></a></div>
+  <div><a href="#"><img src="image\Thumbnail.png" alt="웹 표준 지침서 보기"></a></div>
+  <div><a href="#"><img src="image\Thumbnail.png" alt="CSS 버튼 만들기"></a></div>
+  <div><a href="#"><img src="image\Thumbnail.png" alt="CSS 버튼 만들기"></a></div>
+
+
+
+</div>
+</div>
+
+
+
+
+
+<!-- //박스 이미지 -->
+
+<!-- //인기 크레이터-->
+<div id ="contents1";boder:1px>
+Code your own YouTube app: YouTube API + HTML + CSS + JavaScript (full tutorial)
+  <p>조회수
+  </p>
+</div>
+<div id="contents2">
+  description
+</div>
+
+<!--이미지 상자-->
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+  <!-- //contents -->
+
+<div id = "footer">
+  <div class = "container">
+<div class = "footer">
+<ul>
+  <li><a href ="#">사이트 도움말</a></li>
+  <li><a href ="#">사이트 이용약관</a></li>
+  <li><a href ="#">사이트 운영규칙</a></li>
+  <li><a href = "#">개인정보</a></li>
+</ul>
+<address>
+  Copyright&copy;wap5.co.kr All Right Rederved
+</address>
+</div>
+</div>
+</div>
+  <!-- //footer -->
+</div>
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <script>
+        //배너
+        $('.ban').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            dots: true
+        });
+<!-- wap -->
+</script>
+</body>
+</html>
