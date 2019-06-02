@@ -11,7 +11,7 @@
    -->
 
    <link rel="stylesheet" type="text/css" href="css/slick.css">
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
  <style>
 .embed-youtube {
   position: relative;
@@ -40,6 +40,10 @@
 .container {width : 1250px; height : inherit; margin: 0 auto;}
 
 /* 레이아웃 */
+html,body {margin:0; padding:0; position: relative; height: 100%;}
+#wrap {margin:0 auto;text-align:center;}
+#quick_bg {margin:0 auto;text-align:center;width:1060px;position:relative;}
+#quick {position:absolute;z-index:2;top:15px;width:153px;right:0px;}
 #header{background-color: #80FF00;}
 #side{background-color: white;}
 #cont_cont {background-color: #F6F6F6;}
@@ -172,7 +176,13 @@ input[id="menuicon"]:checked + label + div {left:0;}
 
 <div id ="side">
 <div class = "side_menu">
-
+  <div id="wrap">
+    <div id="quick_bg">
+      <div id="quick">
+        <a href="#form" style="position:fixed;margin-top:-17px"><img src="image\광고배너.png" style="width:250px"></a>
+      </div>
+    </div>
+  </div>
 
     <div>
       <input type="checkbox" id="menuicon">
@@ -231,11 +241,11 @@ input[id="menuicon"]:checked + label + div {left:0;}
 <div class = "ban">
 
 
-  <div><a href="#"><img src="image\Thumbnail.png" alt="웹 표준 지침서 보기"></a></div>
-  <div><a href="#"><img src="image\Thumbnail.png" alt="CSS 버튼 만들기"></a></div>
-  <div><a href="#"><img src="image\Thumbnail.png" alt="웹 표준 지침서 보기"></a></div>
-  <div><a href="#"><img src="image\Thumbnail.png" alt="CSS 버튼 만들기"></a></div>
-  <div><a href="#"><img src="image\Thumbnail.png" alt="CSS 버튼 만들기"></a></div>
+  <div><a href="#"><img src="image\영상사진1.png" alt="영상1"></a></div>
+  <div><a href="#"><img src="image\영상사진2.png" alt="영상2"></a></div>
+  <div><a href="#"><img src="image\영상사진3.png" alt="영상3"></a></div>
+  <div><a href="#https://www.youtube.com/channel/UCNS486DlVIvdRgOxnCQdzmA"><img src="image\영상사진4.png" alt="영상4"></a></div>
+  <div><a href="#"><img src="image\영상사진5.png" alt="영상5"></a></div>
 
 
 
