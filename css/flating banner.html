@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>:: 따라오는 스크롤 배너 ::</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<style type="text/css">
+    .frame {
+        width:1140px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .main {
+        float:left;
+        margin-right:10px;
+        width:780px;
+        height:5000px;
+    }
+
+    .box { width:100%;height:1000px; }
+    .box:nth-child(1) { background-color:#FF9933; }
+    .box:nth-child(2) { background-color:#66CCCC; }
+    .box:nth-child(3) { background-color:#9933CC; }
+    .box:nth-child(4) { background-color:#006699; }
+    .box:nth-child(5) { background-color:#FF00FF; }
+
+    .banner {
+        float:left;
+        background-color:#CCCCCC;
+        width:350px;
+        height:5000px;
+    }
+
+    #chase {
+        width:300px;
+        overflow:hidden;
+        margin-top:10px;
+        margin-left:10px;
+        margin-right:10px;
+        margin-bottom:10px;
+    }
+
+    #chaseImg {
+        width:100%;
+    }
+
+    #chaseBar {
+        width:100%;
+        background-color:#000000;
+        color:#FFFFFF;
+        font-weight:bold;
+        text-align:center;
+    }
+</style>
+<script type="text/javascript">
+jQuery(window).scroll(function() {
+
+
+
+    // 브라우저 화면 스크롤의 현재 높이가 플로팅 배너의 높이보다 클경우
+
+    if(jQuery(window).scrollTop() > jQuery(".banner").offset().top) {
+
+
+
+        jQuery("#chase").css("position", "fixed");
+
+    }
+
+
+
+    // 브라우저 화면 스크롤 현재 높이가 플로팅 배너의 높이보다 작을경우
+
+    else if((jQuery(window).scrollTop() < jQuery(".banner").offset().top)) {
+
+
+        jQuery("#chase").css("position", "static");
+
+    }
+});
+</script>
+</head>
+<body>
+    <div class="frame">
+        <div class="main">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div class="banner">
+            <div id="chase">
+                <img src="image\logo.png" id="chaseImg"/>
+                <div id="chaseBar">사이드 광고</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
