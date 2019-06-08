@@ -1,6 +1,6 @@
 /**
  * 모듈화하기
- * 
+ * (실행 파일)
  * 1. 웹서버 실행 : 명령프롬프트에서 node app.js 실행
  * 2. 웹페이지 열기 : 웹브라우저에서 http://localhost:3000/public/memo.html 열기
  */
@@ -45,8 +45,14 @@ var routes = require('./routes/routes');
 // 익스프레스 객체 생성
 var app = express();
 
+//===== 뷰 엔진 설정 =====//
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+console.log('뷰 엔진이 ejs로 설정되었습니다.');
+
 // 포트 설정
-app.set('port', process.env.PORT || 3000);
+console.log('config.server_port : %d', config.server_port);
+app.set('port', config.server_port || process.env.PORT);
 
 // body-parser 설정
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -116,7 +122,4 @@ var server = http.createServer(app).listen(app.get('port'), function(){
     
 	// 데이터베이스 초기화
 	database.init(app, config);
-   
 });
-
-

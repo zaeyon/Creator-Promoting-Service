@@ -29,7 +29,7 @@ function initRoutes(app, router, upload) {
 		
 		//  라우팅 처리
 		if (curItem.type == 'get') {
-            router.route(curItem.path).get(curModule[curItem.method]);
+          router.route(curItem.path).get(curModule[curItem.method]);
 		} else if (curItem.type == 'post') {
             if (curItem.upload) {
                 router.route(curItem.path).post(upload.array(curItem.upload, 1), curModule[curItem.method]);

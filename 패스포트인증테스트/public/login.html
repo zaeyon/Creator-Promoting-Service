@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+ <meta charset="utf-8"/>
+<style type="text/css">
+<title>Login</title>
+
+#wap{width : 1250px; height : 660px; margin : 0 auto;}
+#footer{width : 1250px; height : 70px;}
+#contents{width : 1250px; height : 500px;}
+#header{width : 1250px; height : 90px;}
+#login_form{background-color: white;}
+
+//* header */
+.header {}
+.header .header-menu {text-align : right;}
+.header .header-menu a {position: relative; display : inline-block; color : #4C4C4C; text-decoration : none;
+                        padding : 4px 0px 0px 3px; margin-right : 15px;}
+.header .header-menu a:hover {text-decoration: underline; color : #E5A102;}
+.header .header-title {}
+.header .header-title h1{ display : inline-block; font-family : Arial; color :#353535;
+                        font-size : 39px; margin-left : 35px; margin-top : 1px;}
+hr .garo{color : #D5D5D5;}
+
+/* 로그인 영역 */
+.login{font-family:  Arial;}
+.login_header .login_tit{text-align: center; font-size: 40px;  margin-top : 110px;}
+
+.login_content{text-align: center;}
+.login_content .id_field .id{width: 400px; height: 60px; margin-bottom: 10px; padding-left: 7px;
+  border-radius: 3px; border : solid 1px  #6a6a6a;}
+.login_content .pw_field .pw{width: 400px; height: 60px; margin-bottom: 10px; padding-left: 7px;
+  border-radius: 3px; border : solid 1px  #6a6a6a; }
+.login_content .login_btn{width : 407px; height : 60px; margin-top: 10px;
+   background-color: #E5A102; color : white; font-size: 20px; border-style: none;
+ border-radius: 3px;}
+
+.login_footer{text-align: center;}
+.login_footer li{display: inline-block; list-style-type: none;}
+.login_footer li a{text-decoration: none; padding : 0 10px; font-size: 15px; color : black;}
+.login_footer li a:hover{color : #E5A102;}
+
+/* footer */
+.footer{ font-size: 12px; text-align :center; display: block; border-top: solid 1px #D5D5D5;}
+.footer li{display : inline; padding : 0px 0px 20px 20px;}
+.footer li a{text-decoration: none; color : black;}
+
+</style>
+</head>
+
+<body>
+    <form method = "post" action = "/process/login">
+  <div id= "wap">
+    <div id ="header">
+    <div class = "container">
+      <div class = "header">
+        <div class = "header-menu">
+          <a href="#Login">Login</a>
+          <a href ="#Mypage">Mypage</a>
+        </div>
+        <!-- header-menu-->
+      <div class = "header-title">
+      <a href="#home"><h1>Creator Promoting Service</h1></a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class = "garo">
+
+  <div id = "contents">
+<div id = "login-form">
+<div class = "login">
+  <div class = "login_header">
+<h1 class = login_tit>LOGIN</h1>
+  </div>
+
+<form method = "post" action = "process/login">
+  <div class = "login_content">
+<div class = "id_field">
+<input type="text"  name = "id" class= "id" value="아이디"/>
+  </div>
+  <div class = "pw_field">
+<input type = "password" name="password" class="pw" value="비밀번호"/>
+  </div>
+<button type = "submit" class = "login_btn">로그인</button>
+      
+</div>
+</form>    
+  <div class= "login_footer">
+      
+<ul>
+<li><a href = "#Id 찾기">Id 찾기</a></li>
+<li><a href = "#pw 찾기">pw 찾기</a></li>
+<li><a href = "signup.html">회원가입</a></li>
+</ul>
+      
+  </div>
+</div>
+</div>
+</div>
+      
+  <div id = "footer">
+  <div class = "container">
+  <div class = "footer">
+  <ul>
+    <li><a href ="#">사이트 도움말</a></li>
+    <li><a href ="#">사이트 이용약관</a></li>
+    <li><a href ="#">사이트 운영규칙</a></li>
+    <li><a href = "#">개인정보</a></li>
+  </ul>
+  <address>
+    Copyright&copy;wap5.co.kr All Right Rederved
+  </address>
+  </div>
+  </div>
+  </div>
+</div>
+        
+      
+        
+</div>
+    
+</body>
+    
+</html>
