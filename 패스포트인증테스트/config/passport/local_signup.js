@@ -37,6 +37,16 @@ module.exports = new LocalStrategy({
                 // SQL문을 실행합니다.
                 var exec = conn.query('insert into user set ?', data, function(err, user) {
                     conn.release();
+                    
+                    console.log('==========exec==========');
+                    console.dir(exec);
+                    console.log('========================');
+                    console.log('==========user==========');
+                    console.dir(user);
+                    console.log('========================');
+
+
+
                     console.log('실행 대상 SQL : ' + exec.sql);
                     
                     if(err) {

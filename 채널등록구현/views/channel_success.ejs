@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <head>    
+    <meta charset = "UTF-8">
+    <title>채널 등록 성공 페이지</title>
+   </head>    
+   <body>
+      <h1>채널 등록 성공</h1>
+      <div><p>채널 이름 : <%= channelName %> </p></div>
+      <div><p>채널 주소 : <%= channelAddress %> </p></div>
+      <div><p>대표 콘텐츠 : <%= channelContent %></p></div>
+      <div><p>플랫폼 : <%= channelPlatform %></p></div>
+      <div><p>채널 소개 : <%= channelIntroduction %></p></div>
+       
+       <% if (filename) { %>
+                <a href = "#" class = "thumbanil"><img src = "<%= filename %>" width = "200px"></a>
+           <% } %>
+           <br>
+           <input type = "button" value = "<%=button_value %>" onclick = "<%=button_action %>" class = "btn btn-primary">
+       
+      <div class = "container">
+       <div class = "form=group">
+           
+          </div>
+       </div>
+    </body>
+</html>
