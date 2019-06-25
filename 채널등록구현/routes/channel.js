@@ -2,6 +2,35 @@
  * 채널 등록시 저장된 데이터 DB에 저장하기
  */
 
+// 현재 데이터타입 구하기
+function getTimeStamp() {
+  var d = new Date();
+
+  var s =
+    leadingZeros(d.getFullYear(), 4) + '-' +
+    leadingZeros(d.getMonth() + 1, 2) + '-' +
+    leadingZeros(d.getDate(), 2) + ' ' +
+
+    leadingZeros(d.getHours(), 2) + ':' +
+    leadingZeros(d.getMinutes(), 2) + ':' +
+    leadingZeros(d.getSeconds(), 2);
+
+  return s;
+}
+
+
+
+function leadingZeros(n, digits) {
+  var zero = '';
+  n = n.toString();
+
+  if (n.length < digits) {
+    for (i = 0; i < digits - n.length; i++)
+      zero += '0';
+  }
+  return zero + n;
+}
+
 var saveChannel = function(req, res) {
     
     console.log('saveChannel 호출됨.');
@@ -11,6 +40,7 @@ var saveChannel = function(req, res) {
     var paramContent = req.body.content || req.query.content;
     var paramPlatform = req.body.platform || req.query.platform;
     var paramIntroduction = req.body.introducton || req.query.introduction;
+    var paramDatetime = getTimeStamp();
     
     var files = req.files;
     
@@ -62,7 +92,8 @@ var saveChannel = function(req, res) {
             content : paramContent,
             platform : paramPlatform,
             introduction : paramIntroduction,
-            filename : filename
+            filename : filename,
+            time : paramDatetime
         };
         
         database.channel.insertChannel(database.pool, data, function(err, addedChannel) {

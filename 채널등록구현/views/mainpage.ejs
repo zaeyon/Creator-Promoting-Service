@@ -16,7 +16,8 @@
 #side{float : left; width : 160px; height : 570px;}
 #contents{float : left; width : 1200px; height : 500px}
 #footer{width : 1090px; height :100px;}
-
+#all_channel_list{ position : absolute; margin : 0px 0px -50px 220px}
+     
 /* 컨테이너 */
 .container {width : 1500px; height : inherit; margin: 0 auto;}
 
@@ -94,13 +95,13 @@
 }
      .Left_arrow img{
          position : absolute;
-         margin : -110px -38px 0px;
+         margin : 33px 50px 0px -550px;
            
      }
      
      .Right_arrow img{
         position : absolute;
-        margin : -35px 420px
+        margin : -185px 470px
         
 
             
@@ -114,9 +115,10 @@
 /* 채널 목록 */
 
 .list_title {
-    position : absolute;
-    margin : { 50px 20px};
-         font-size : 30px;
+    
+    text-align : left;
+    font-size : 22px;
+    margin : 
      }
      
      
@@ -135,6 +137,10 @@
          text-align : right;
      }     
      
+     .all_creator h2 table {
+         position : absolute;
+         margin :  10px 0px 10px;
+     }     
      
      
    </style>
@@ -197,6 +203,7 @@
     
 <!-------- 채널 목록 -------->
 
+<div id = "all_channel_list">
 <%
 var curSet = pasing.curset
 var endPage = pasing.endPage
@@ -208,44 +215,59 @@ var page_size = pasing.page_size
 var curPage = pasing.curPage
 var prePage;
 var nextPage = parseInt(curPage) + 1;
-    
+
 if(curPage == 1)
     {
-        prePage = curPage;
+        prePage = 1;
     }
 else
     {
-        prePage = curPage-1;
+        prePage = curPage - 1;
     }
-    
-    
 %>
-<div class = "recommentation_creator">    
+    
+    
+
+<span>
+    
+    
+<div class = "all_creator">    
 <div class = "channel_list">
     <div class = "thumbnail">
+ 
+        
+         <div class = "Left_arrow">
+                <img onclick = "javascript:location.href = 'http://localhost:3000/pasing/<%= prePage %>';" src = "../public/image/Left_arrow.png"> 
+
+    </div>
+
     
-    
-    <table width = "1050" height = "140" border = "0" >
-    <tb>
+
+        
+    <table width = "950" height = "140" border = "0" >
     <p class = "list_title">
         
-        인기 크리에이터
+     전체 크리에이터
         
     </p>
+        
       <thead>
-      </thead>
+          <tr>
+          <th>    </th>
+          </tr>
+        </thead>
 
         <tbody>
             
             <br>
-            <td width = "50">
             
-            <div class = "Left_arrow">
-                <img onclick = "javascript:location.href = 'http://localhost:3000/pasing/<%= prePage %>';" src = "../public/image/Left_arrow.png">
-                </div>
+                            
             <% data.forEach(function (item, index){ %>
             
-            <ul>       
+            <ul>
+            
+            
+               
                    <td>
                    <div class = "thumbnail_size">
                        <li><a href = "/chanelInfo">
@@ -257,38 +279,108 @@ else
                   <%= item.name %>       
                 </td>
             <% }) %>
-                <div class = "Right_arrow">
-                <img onclick = "javascript:location.href = 'http://localhost:3000/pasing/<%= nextPage %>';" src = "../public/image/Right_arrow.png">
-                    </div>
                 
+             
                 </ul>
-            </td>
+            
         </tbody>
-        </tb>
-        
-        <tb>
-        
-        
-        </tb>
-        
-        
           
         
         
-        
     </table>
+    
+        <div class = "Right_arrow">
+                <img onclick = "javascript:location.href = 'http://localhost:3000/pasing/<%= nextPage %>';" src = "../public/image/Right_arrow.png">
+                    </div>
+               
     </div>
 </div>
                 
 <br><br><br><br><br><br><br><br><br><br><br>
     
+<!--
+<div class = "set">
+    <ul class = "pager" >
+            
+<%
+        if(curSet > 1){
+       %>
+        
+        <li value=(startPage -1) class = "previous">
+            <a href = '/pasing/<%= ( startPage - 1) %>'>이전페이지</a>
+        </li>
+        
+        <%
+        }
+        %>
+        
+        
+        <%
+    for(var i = startPage; i <= endPage; i++){
+        if(i > totalPage){break;}
+        
+        if(i == curPage){
+        %>
+           <li value=<%= i %> class='' >
+           <a href = '/pasing/<%= i%>'>
+               <%= i %>
+        </a>
+        </li>
+        
+        <%
+      }else{
+    %>
     
-<tr>
-    </tr>
+    <li value=<%= i %> class='active'>
+        <a href = '/pasing/<%= i %>'>
+            <%= i %>
+        </a>
+        </li>    
+        
+        <%
+        }
+        %>
+        
+        <%
+        }
+        %>
+           
+           <%
+           if(curSet < totalSet){
+            %>
+                      <li value=( endPage + 1) class ="next">
+                          <a href = '/pasing/<%= ( endPage + 1) %>'>다음페이지</a>
+                      </li>
+          <%
+           }
+          %>
+        
+    </ul>
+    
+    </div>
+    
     <br>
     <br>
     </div>
+-->
+    </div>
+    </span>
+    
+    
+    
 
+    
+
+    <script>
+// ajax기능 함수 정의
+function fetchPage(name) {
+    fetch(name).then(function(response) {
+        response.test().then(function(text) {
+            document.qeurySelector('article').innerHTML = text;
+         })
+        });
+    }
+</script>
     
     
 
@@ -297,6 +389,7 @@ else
         
   <!--이미지 상자-->
 </div>
+    
 
   <!-- //contents -->
 
@@ -319,11 +412,7 @@ else
 </div>
 <!-- wap -->
 
-<!— //contents —>
 
-<!— //footer —>
-<!— </div> —>
-<!— wap —>
 <script type="text/javascript">
   document.documentElement.style.overflow = "hidden";
   //   document.getElementById("contents").style.overflow = "hidden";
