@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <style type="text/css">
+   <tytle>구독</tytle>
+
+/* 레이아웃 */
+#wrap{width: 100%;}
+#header{width : 100%; height : 100%;  border-bottom : solid 1px #D5D5D5}
+#side{float : left; background-color: #444;}
+#contents{float : left; width : 86%; height : 100%; background-color: #F6F6F6;}
+#footer{float: left; width : 100%; height : 100%; background-color : white; padding-bottom: 20px; border-top: solid 1px #D5D5D5;}
+
+/* 헤더 */
+.header-tit h1{ font-family : Arial; color :#353535;
+                font-size : 40px; padding-left: 40px;  margin-top: 25px; margin-bottom: 30px;}
+
+/* 사이드 */
+.side_menu {list-style-type : none; margin : 0px; padding : 0px; width : 160px;
+            height : 500px; background-color : white; }
+.side_menu h2{font-size: 13px; margin:0 0 10px 0; padding: 10px 0 0 10px; }
+.side_menu li a {text-decoration : none; display:block; padding : 10px 20px; color : #000;}
+.side_menu li a:hover{ background-color: #FFE066; color : white;}
+.side_menu hr.garo { border : solid 1px #D5D5D5;}
+.side_scroll {overflow-x : hidden; overflow-y: auto;}
+
+/* 컨텐츠 */
+.cont{overflow : hidden; border-left : solid 1px #D5D5D5; }
+.cont .cont{float : left; background-color: white; margin : 0px 0px 45px 45px;}
+.cont .box1{width : 950px; height: 300px; margin-top : 35px; margin-bottom: 5px; border : solid 1px #EAEAEA;}
+.cont .box2{width : 950px; height : 300px; margin-top : 5px; margin-bottom : 5px; border : solid 1px #EAEAEA;}
+.cont .box3{width : 950px; height : 300px; margin-top : 5px; margin-bottom : 35px; border : solid 1px #EAEAEA;}
+.cont .box_tit{padding-left : 28px; padding-bottom: 5px; font-size : 15px;}
+.cont p{font-size: 13px; margin-left: 30px; margin-top: 10px;}
+.scroll{overflow-x: hidden; overflow-y: auto;}
+
+
+
+/* 푸터 */
+.footer{ font-size: 12px; text-align :center;display: inline;}
+.footer ul{padding-left: 0px;}
+.footer li{display : inline; padding : 0px 0px 20px 20px;}
+.footer li a{text-decoration: none; color : black;}
+
+</style>
+</head>
+
+<body>
+
+<div id ="wrap">
+<div id = "header">
+ <div class = "header-tit">
+  <h1>구독</h1>
+ </div>
+</div>
+
+<div id = "side">
+  <div class = "side_menu">
+    <h2>구독</h2>
+    <li><a href = "">4</a></li>
+    <li><a href = "">4</a></li>
+    <li><a href = "">6</a></li>
+    <li><a href = "">8</a></li>
+    <li><a href = "">9</a></li>
+  </div>
+</div>
+
+<div id = "contents">
+  <div class = "cont">
+    <div class = "cont box1">
+      <h3><span class = "box_tit">구독한 크리에이터</span></h3>
+      <p>내가 구독한 크리에이터들을 볼 수 있습니다</p>
+
+    </div>
+    <!--cont_box1-->
+
+    <div class = "cont box2">
+      <h3><span class = "box_tit">좋아요 표시한 영상 </span></h3>
+      <p>내가 좋아요 표시한 영상들을 볼 수 있습니다</p>
+    </div>
+    <!--cont_box2-->
+
+    <div class = "cont box3">
+      <h3><span class = "box_tit">재생 목록</span></h3>
+      <p>내가 재생한 영상 목록을 볼 수 있습니다</p>
+    </div>
+    <!--cont_box3-->
+
+  </div>
+</div>
+
+<div id = "footer">
+<div class = "footer">
+  <ul>
+    <li><a href ="#">사이트 도움말</a></li>
+    <li><a href ="#">사이트 이용약관</a></li>
+    <li><a href ="#">사이트 운영규칙</a></li>
+    <li><a href = "#">개인정보</a></li>
+  </ul>
+<address>
+  Copyright&copy;wap5.co.kr All Right Rederved
+</address>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
