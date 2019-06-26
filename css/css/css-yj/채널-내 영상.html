@@ -8,38 +8,36 @@
 /* 레이아웃 */
 #wrap{width : 100%;}
 #header{width : 100%; height : 100%;}
-#contents{float : left; width : 100%; height : 100%; background : white;}
-#footer{float : left; width : 100%; height : 100%; background-color : white; padding-bottom: 30px;}
+#contents{float: left; width : 100%; height : 100%; }
+#footer{float: left; width : 100%; height : 100%;  padding-bottom: 20px;}
 
 
 #contents{border-top : solid 1px #D5D5D5; border-bottom : solid 1px #D5D5D5;}
 
 
 /* 헤더 */
-.header-title{}
+.header-title{ }
 .header-title h1{display : inline-block;  font-family : Arial; color :#353535;
-                 font-size : 39px; margin-left : 57px; margin-top : 14px;}
+                 font-size : 40px; padding-left: 40px; margin-top: 25px; margin-bottom: 30px;}
 
 /* 메뉴 */
 .menu{position: relative;}
 .menu li{float : left; border-top : solid 1px #D5D5D5; list-style-type : none; }
 .menu li a{display : block; text-align : center; text-decoration : none; color : black; font-weight : bold; font-size: 14px;}
-.menu .my-mo{display : block;  border-left : solid 1px #D5D5D5;  line-height : 40px; width : 80px;}
+.menu .my-mo{display : block;  border-left : solid 1px #D5D5D5;  line-height : 40px; width : 80px; background :#E5A102; }
 .menu .my-co{display : block;  border-left : solid 1px #D5D5D5;  border-right : solid 1px #D5D5D5; line-height : 40px; width : 80px;}
-.menu li:hover{background :#E5A102; color : white;}
+.menu li:hover{background :#E5A102;}
 .menu li a:hover{color : white;}
 
 /* 컨텐츠 */
-.cont{}
-.cont li{float : left; list-style-type : none; padding-left: 40px; padding-bottom: 50px;}
-.cont li .img1{}
-.cont li .img2{}
-.cont li .img3{}
-.cont li .img4{}
+.cont{display: grid; grid-template-columns: repeat(5, 1fr); grid-row-gap: 50px; padding-bottom: 120px; text-align: center; padding-left: 20px;}
+.cont .gird{}
+
 
 
 /* 푸터 */
 .footer{ font-size: 12px; text-align :center;}
+.footer ul{padding-left: 0px;}
 .footer li{display : inline; padding : 0px 0px 20px 20px; }
 .footer li a{text-decoration: none; color : black;}
 
@@ -65,17 +63,29 @@
 
 <div id = "contents">
 <div class = "cont" scroll="auto">
-  <ul>
-  <li class= "img1"><a href ="#"><img width="250" src ="image\Thumbnail.png"></a></li>
-  <li class= "img2"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></li>
-  <li class ="img3"><a href ="#"><img width ="250"src="image\Thumbnail.png"></a></li>
-  <li class= "img4"><a href ="#"><img width="250" src ="image\Thumbnail.png"></a></li>
-  <li class= "img1"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></li>
-  <li class ="img2"><a href ="#"><img width ="250"src="image\Thumbnail.png"></a></li>
-  <li class= "img3"><a href ="#"><img width="250" src ="image\Thumbnail.png"></a></li>
-  <li class= "img4"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></li>
-
-  </ul>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
+  <div class= "grid"><a href ="#"><img width="250" src="image\Thumbnail.png"></a></div>
 </div>
 </div>
 <!--contents-->
