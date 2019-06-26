@@ -4,16 +4,28 @@
  <meta charset="utf-8"/>
 <style type="text/css">
 
-<title>Login</title>
+<title>로그인</title>
 
-#wap{width : 100%; margin : 0 auto;}
-#footer{width : 100%; height : 100%;}
-#contents{width : 100%; height : 100%; padding-bottom: 100px;}
-#header{width : 100%; height : 100%; padding-bottom: 20px;}
-
+#wap{width : 100%; height : 100%; margin : 0 auto;}
+#header{width : 100%; height :100%;}
+#contents{width : 100%; height :100%; padding-bottom: 100px;}
+#footer{width : 100%; height : 100%; padding-bottom: 20px;}
 #login_form{background-color: white;}
+
+/* header */
+.header {}
+.header .header-menu {text-align : right;}
+.header .header-menu a {position: relative; display : inline-block; color : #4C4C4C; text-decoration : none;
+                        padding : 4px 0px 0px 3px; margin-right : 15px;}
+.header .header-menu a:hover {text-decoration: underline; color : #E5A102;}
+.header .header-title h1{ display : inline-block; font-family : Arial; color :#353535;
+                        font-size : 40px; padding-left: 40px; margin-top: 0px; margin-bottom: 30px;}
+hr{color : #D5D5D5;}
+
+/* 로그인 영역 */
 .login{font-family:  Arial;}
 .login_header .login_tit{text-align: center; font-size: 40px;  margin-top : 110px;}
+
 .login_content{text-align: center;}
 .login_content .id_field .id{width: 400px; height: 60px; margin-bottom: 10px; padding-left: 7px;
   border-radius: 3px; border : solid 1px  #6a6a6a;}
@@ -22,65 +34,58 @@
 .login_content .login_btn{width : 407px; height : 60px; margin-top: 10px;
    background-color: #E5A102; color : white; font-size: 20px; border-style: none;
  border-radius: 3px;}
+
+/* 로그인 푸터 */
 .login_footer{text-align: center;}
+.login_footer ul{padding-left: 0px;}
 .login_footer li{display: inline-block; list-style-type: none;}
 .login_footer li a{text-decoration: none; padding : 0 10px; font-size: 15px; color : black;}
 .login_footer li a:hover{color : #E5A102;}
 
+/* footer */
 .footer{ font-size: 12px; text-align :center; display: block; border-top: solid 1px #D5D5D5;}
 .footer li{display : inline; padding : 0px 0px 20px 20px;}
 .footer li a{text-decoration: none; color : black;}
 
-
-.header {}
-.header .header-menu {text-align : right;}
-.header .header-menu a {position: relative; display : inline-block; color : #4C4C4C; text-decoration : none;
-                        padding : 4px 0px 0px 3px; margin-right : 15px;}
-.header .header-menu a:hover {text-decoration: underline; color : #F2D359;}
-.header .header-menu a:before {content :''; width : 1px; height : 12px; position : absolute;background: #4C4C4C; left :-9px; top : 10px;}
-.header-menu a:first-child:before{width: 0px; height: 0px}
-.header .header-title {}
-.header .header-title h1{ display : inline-block; font-family : Arial; color :#353535;
-                        font-size : 39px; margin-left : 35px; margin-top : 1px;}
-hr .garo{color : #D5D5D5;}
 </style>
 </head>
 
 <body>
-    <form method = "post" action = "/process/login">
-  <div id= "wap">
-    <div id ="header">
-    <div class = "container">
-      <div class = "header">
-        <div class = "header-menu">
-          <a href="#Login">Login</a>
-          <a href ="#Mypage">Mypage</a>
-          <a href = "#등록">Registration</a>
-        </div>
-        <!-- header-menu-->
-      <div class = "header-title">
-      <a href="#home"><h1>Creator Promoting Service</h1></a>
-      </div>
+<div id= "wap">
+  <div id ="header">
+  <div class = "header">
+    <div class = "header-menu">
+      <a href="login.html">Login</a>
+      <a href ="mypage.html">Mypage</a>
+      <a href= "등록.html">Registration</a>
+    </div>
+    <!-- header-menu-->
+    <div class = "header-title">
+      <a href="페이지.html"><h1>Creator Promoting Service</h1></a>
     </div>
   </div>
 </div>
-<hr class = "garo">
+<!--header-->
+<hr>
 
-  <div id = "contents">
+<div id = "contents">
 <div id = "login-form">
+  <form method="post">
 <div class = "login">
   <div class = "login_header">
 <h1 class = login_tit>LOGIN</h1>
   </div>
-  <div class = "login_content">
+
+<div class = "login_content">
 <div class = "id_field">
-<input type="text" name = "id" class= "id" value="아이디"/>
+<input type="text"  name = "id" class= "id" value="아이디"/>
   </div>
   <div class = "pw_field">
-<input type = "password" name ="password" class="pw" value="비밀번호"/>
+<input type = "text" name="pw" class="pw" value="비밀번호"/>
   </div>
 <button type = "submit" class = "login_btn">로그인</button>
 </div>
+
   <div class= "login_footer">
 <ul>
 <li><a href = "#Id 찾기">Id 찾기</a></li>
@@ -89,12 +94,12 @@ hr .garo{color : #D5D5D5;}
 </ul>
   </div>
 </div>
+</form>
 </div>
 </div>
+<!--contents-->
 
-
-  <div id = "footer">
-  <div class = "container">
+<div id = "footer">
   <div class = "footer">
   <ul>
     <li><a href ="#">사이트 도움말</a></li>
@@ -106,9 +111,7 @@ hr .garo{color : #D5D5D5;}
     Copyright&copy;wap5.co.kr All Right Rederved
   </address>
   </div>
-  </div>
-  </div>
+ </div>
 </div>
-</form>
 </body>
 </html>

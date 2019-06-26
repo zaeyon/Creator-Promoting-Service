@@ -6,7 +6,7 @@
 
 /* 레이아웃 */
 #wap{margin: 0 auto; width : 100%; }
-#header{width : 100%; height : 100%;}
+#header{width : 100%; height : 100px;}
 #side{float : left; width : 160px; height : 570px;}
 #contents{float : left; width : 1090px; height : 500px}
 #footer{width : 1090px; height :100px;}
@@ -15,11 +15,9 @@
 .container {width : 1250px; height : inherit; margin: 0 auto;}
 
 /* 레이아웃 */
-#header{background-color:white;}
-#side{background-color: white;}
 #cont_cont {background-color: #F6F6F6;}
 #cont_img{background-color: white;}
-#footer {background-color : white;}
+
 
 /* 헤더 */
 .header {}
@@ -31,7 +29,7 @@
 .header-menu a:first-child:before{width: 0px; height: 0px;}
 .header .header-title {}
 .header .header-title h1{ display : inline-block; font-family : Arial; color :#353535;
-                        font-size : 39px; margin-left : 35px; margin-top: 1px;}
+                        font-size : 40px; margin-left : 35px; margin-top: 1px;}
 .header .search{position: absolute; left : 590px; top : 40px;}
 .header .search .name{height : 33px; width : 200px; border-radius : 5px; border: solid #6a6a6a; padding : 0px 6px;}
 .header .search button[type=submit]{background-color:#6a6a6a; color :white; font-size: 15px; border: solid #6a6a6a;
@@ -43,7 +41,7 @@
 .side_menu li a {text-decoration : none; display:block; padding : 10px 20px; color : #000;}
 .side_menu li a.active { background-color : #E5A102; color : white;}
 .side_menu li a:hover{ background-color: #FFE066; color : white;}
-.side_menu hr.garo { border : solid 1px #D5D5D5;}
+.side_menu hr{ border : solid 1px #D5D5D5;}
 .side_scroll {overflow-x : hidden; overflow-y: auto;}
 
 
@@ -87,12 +85,12 @@
   <div class = "header">
     <div class = "header-menu">
       <a href="login.html">Login</a>
-      <a href ="#Mypage">Mypage</a>
+      <a href ="mypage.html">Mypage</a>
       <a href = "등록.html">Registration</a>
     </div>
     <!-- header-menu-->
   <div class = "header-title">
-  <a href="#home"><h1>Creator Promoting Service</h1></a>
+  <a href="페이지.html"><h1>Creator Promoting Service</h1></a>
   </div>
   <!-- header-title -->
   <div class = "search">
@@ -111,23 +109,23 @@
   <div class = "side_scroll">
 <div class = "side_menu">
   <li><a class = "active" href = "#home">home</a></li>
-  <li><a href = "#인기">인기크리에이터</a></li>
-  <li><a href - "#추천">추천크리에이터</a></li>
-  <hr class = "garo">
-  <li><a href = "#game">게임</a></li>
-  <li><a href = "#mukbang">먹방</a></li>
-  <li><a href = "#humor">유머</a></li>
-  <li><a href = "#music">음악</a></li>
-  <li><a href = "#travel">여행</a></li>
-  <li><a href = "#movie">영화</a></li>
-  <li><a href = "#interview">인터뷰</a></li>
-  <li><a href = "#news">뉴스</a></li>
-  <li><a href = "#education">교육</a></li>
-  <li><a href = "#theothers">기타</a></li>
-  <li><a href = "#beauty">Beauty</a></li>
-  <li><a href = "#ASMR">ASMR</a></li>
-  <li><a href = "#v-log">V-log</a></li>
-  <li><a href = "#bulletin board">자유게시판</a></li>
+  <li><a href = "#인기.html">인기크리에이터</a></li>
+  <li><a href = "#추천.html">추천크리에이터</a></li>
+  <hr>
+  <li><a href = "#game.html">게임</a></li>
+  <li><a href = "#mukbang.html">먹방</a></li>
+  <li><a href = "#humor.html">유머</a></li>
+  <li><a href = "#music.html">음악</a></li>
+  <li><a href = "#travel.html">여행</a></li>
+  <li><a href = "#movie.html">영화</a></li>
+  <li><a href = "#interview.html">인터뷰</a></li>
+  <li><a href = "#news.html">뉴스</a></li>
+  <li><a href = "#education.html">교육</a></li>
+  <li><a href = "#theothers.html">기타</a></li>
+  <li><a href = "#beauty.html">Beauty</a></li>
+  <li><a href = "#ASMR.html">ASMR</a></li>
+  <li><a href = "#v-log.html">V-log</a></li>
+  <li><a href = "#bulletin board.html">자유게시판</a></li>
 </div>
 </div>
 </div>
@@ -193,7 +191,6 @@
   <!-- //contents -->
 
 <div id = "footer">
-<div class = "container">
 <div class = "footer">
 <ul>
   <li><a href ="#">사이트 도움말</a></li>
@@ -206,16 +203,11 @@
 </address>
 </div>
 </div>
-</div>
   <!-- //footer -->
 </div>
 <!-- wap -->
 
-<!— //contents —>
 
-<!— //footer —>
-<!— </div> —>
-<!— wap —>
 <script type="text/javascript">
   document.documentElement.style.overflow = "hidden";
   //   document.getElementById("contents").style.overflow = "hidden";
