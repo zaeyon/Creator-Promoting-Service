@@ -1,0 +1,27 @@
+{
+  "name": "mission",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "body-parser": "^1.17.1",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.3",
+    "ejs": "^2.6.1",
+    "express": "^4.15.2",
+    "express-error-handler": "^1.1.0",
+    "helmet": "^3.18.0",
+    "mime": "^1.3.4",
+    "multer": "^1.3.0",
+    "mysql": "^2.13.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "window": "^4.2.6"
+  }
+}

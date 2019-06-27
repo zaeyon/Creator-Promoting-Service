@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset = "UTF-8">
+    <style type="text/css">
+  <title>회원가입</title>
+#wap{width : 1250px; height : 940px;}
+#content{width : 1250px; height : 900px;}
+#footer{width : 1250px; height : 70px;}
+#signup_form{background-color: white;}
+
+.
+/* 회원가입 영역 */
+  .signup_header{}
+  .signup_header h1{font-family : Arial; color :#353535; padding-top: 60px; padding-bottom: 40px;
+                          font-size : 39px; text-align: center;}
+
+.signup_content{text-align: center;}
+.signup_content .signup{}
+.signup_content .signup .id_field .id {width:350px; height: 60px; margin-bottom: 25px; padding-left: 9px; font-size: 15px;
+  border-radius: 3px; border : solid 1px #4C4C4C;}
+.signup_content .signup .pw_field .pw{width: 350px; height: 60px; margin-bottom: 25px; padding-left: 9px; font-size: 15px;
+  border-radius: 3px; border : solid 1px  #4C4C4C;}
+.signup_content .signup .name_field .nickname{width: 350px; height: 60px; margin-bottom: 25px; padding-left: 9px; font-size: 15px;
+  border-radius: 3px; border : solid 1px  #4C4C4C;}
+.signup_content .signup .email_field .email{width: 350px; height: 60px; margin-bottom: 25px; padding-left: 9px;  color : #747474; font-size: 13px;
+    border-radius: 3px; border : solid 1px   #4C4C4C;}
+.signup_content .signup .btn{width : 357px; height : 60px; margin-top: 10px;
+       background-color: #E5A102; color : white; font-size: 20px; border-style: none;
+     border-radius: 3px;}
+.signup_content h2{font-size: 15px; color : #4C4C4C;}
+
+ /* footer */
+ .footer{ font-size: 12px; text-align :center; display: block; border-top: solid 1px #D5D5D5;}
+ .footer li{display : inline; padding : 0px 0px 20px 20px;}
+ .footer li a{text-decoration: none; color : black;}
+
+  </style>
+  </head>
+
+<body>
+  <div id= "wap">
+
+  <div id = "content">
+    <div id = "signup_form">
+  <div class = "signup_header">
+    <h1>회원가입</h1>
+  </div>
+
+  <div class = "signup_content">
+    <div class = "signup">
+
+    <form method = "post" action = "/process/adduser">
+<div class = "id_field">
+  <h2 class  = "signup_tit"><label for= "id">아이디</label></h2>
+  <input type = "text" name = "id" class = "id" id= "id"/>
+</div>
+<div class = "pw_field">
+  <h2 class = "signup_tit"><label for="pw">비밀번호</label></h2>
+  <input type = "password" name = "password" id= "pw" class = "pw"/>
+</div>
+<div class = "name_field">
+   <h2 class = "signup_tit"><label for ="nickname">닉네임</label></h2>
+   <input type = "text" id= "nickname" name = "nickname" class= "nickname"/>
+</div>
+<div class ="email_field">
+  <h2 class = "signup_tit"><label for ="email" >이메일</label></h2>
+  <input type = "text" name = "email" class="email" id="email" value="E-mail"/>
+</div>
+<p>
+  <input type = "submit" value = "회원가입" name = "" class = "btn"/>
+</p>
+    </form>
+  </div>
+  </div>
+</div>
+</div>
+
+<div id = "footer">
+<div class = "container">
+<div class = "footer">
+<ul>
+  <li><a href ="#">사이트 도움말</a></li>
+  <li><a href ="#">사이트 이용약관</a></li>
+  <li><a href ="#">사이트 운영규칙</a></li>
+  <li><a href = "#">개인정보</a></li>
+</ul>
+<address>
+  Copyright&copy;wap5.co.kr All Right Rederved
+</address>
+</div>
+</div>
+</div>
+</div>
+    </body>
+</html>

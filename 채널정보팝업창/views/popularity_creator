@@ -1,0 +1,134 @@
+
+<%
+var curSet = pasing.curset
+var endPage = pasing.endPage
+var startPage = pasing.startPage
+var totalSet = pasing.totalSet
+var totalPage = pasing.totalPage
+var page_list_size = pasing.page_list_size
+var page_size = pasing.page_size
+var curPage = pasing.curPage
+%>
+    
+    
+
+    
+<div class = "recommentation_creator">    
+<div class = "channel_list">
+    <div class = "thumbnail">
+    <tr>
+    </tr>
+    <table width = "1050" height = "140" border = "0" >
+    <p class = "list_title">
+        
+        인기 크리에이터
+        
+    </p>
+      <thead>
+      </thead>
+
+        <tbody>
+            
+            <br>
+            <td width = "50">
+            
+            <div class = "Left_arrow">
+                <img src = "../public/image/Left_arrow.png">
+                </div>
+            <% data.forEach(function (item, index){ %>
+            
+            <ul>
+            
+            
+               
+                   <td>
+                   <div class = "thumbnail_size">
+                       <li><a href = "/chanelInfo">
+                           
+                               <img src = "http://localhost:3000/uploads/<%= item.filename %>"/>
+                           </a></li>
+                   </div>   
+               
+                  <%= item.name %>       
+                </td>
+            <% }) %>
+                <div class = "Right_arrow">
+                <img src = "../public/image/Right_arrow.png">
+                    </div>
+                
+                </ul>
+            </td>
+        </tbody>
+          
+        
+        
+    </table>
+    </div>
+</div>
+                
+<br><br><br><br><br><br><br><br><br><br><br>
+    
+<tr>
+<div class = "set">
+    <ul class = "pager" >
+            
+<%
+        if(curSet > 1){
+       %>
+        
+        <li value=(startPage -1) class = "previous">
+            <a href = '/pasing/<%= ( startPage - 1) %>'>이전페이지</a>
+        </li>
+        
+        <%
+        }
+        %>
+        
+        
+        <%
+    for(var i = startPage; i <= endPage; i++){
+        if(i > totalPage){break;}
+        
+        if(i == curPage){
+        %>
+           <li value=<%= i %> class='' >
+           <a href = '/pasing/<%= i%>'>
+               <%= i %>
+        </a>
+        </li>
+        
+        <%
+      }else{
+    %>
+    
+    <li value=<%= i %> class='active'>
+        <a href = '/pasing/<%= i %>'>
+            <%= i %>
+        </a>
+        </li>    
+        
+        <%
+        }
+        %>
+        
+        <%
+        }
+        %>
+           
+           <%
+           if(curSet < totalSet){
+            %>
+                      <li value=( endPage + 1) class ="next">
+                          <a href = '/pasing/<%= ( endPage + 1) %>'>다음페이지</a>
+                      </li>
+          <%
+           }
+          %>
+        
+    </ul>
+    
+    </div>
+    </tr>
+    <br>
+    <br>
+    </div>

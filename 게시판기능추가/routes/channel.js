@@ -146,7 +146,7 @@ router.get("/pasing/:cur", function (req, res) {
         var totalSet = Math.ceil(totalPage / page_list_size); // 전체 세트수
         var curSet = Math.ceil(curPage / page_list_size)
         // 현재 세트 번호
-        var startPage = ((curSet - 1) * 10) + 1 // 현재 세트내 출력될 시작 페이지
+        var startPage = ((curSet - 1) * 5) + 1 // 현재 세트내 출력될 시작 페이지
         var endPage = (startPage + page_list_size) - 1;
         // 현재 세트내 출력될 마지막 페이지
         
@@ -155,7 +155,7 @@ router.get("/pasing/:cur", function (req, res) {
             no = 0
         } else {
             // 0보다 크면 limit 함수에 들어갈 첫번째 인자 값 구하기
-            no = (curPage -1) * 10
+            no = (curPage -1) * 5
         }
         
         console.log('[0] curPage : ' + curPage + ' | [1] page_list_size : ' + page_list_size + ' | [2] page_size : ' + page_size + ' | [3] totalPage : ' + totalPage + ' | [4] totalSet : ' + totalSet + ' | [5] curSet : ' + curSet + ' | [6] startPage : ' + startPage + ' | [7] endPage : ' + endPage);

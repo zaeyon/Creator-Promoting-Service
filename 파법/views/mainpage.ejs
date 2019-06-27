@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Channel List</title>
+ <meta charset="utf-8"/>
+ <meta name = "viewport" content = "width = device-width, inital-scale=1">
+ <link rel = "stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+ <style type="text/css">
+      
+#wrap{}
+body{display: block;}
+
+
+/* contents */
+.cont1{width : 400px; height :400px; border: 1px solid; text-align: center; position: absolute; left : 50%; top : 50%; transform: translate(-50%, -50%);
+       background-color: #fff; opacity: 0; transition: all 0.5s; z-index: 5; box-sizing: border-box; border-radius:10px; border: 1px solid #EAEAEA;}
+.cont1:target{opacity: 1;}
+.cont1:target +.dim{opacity: 1; z-index: 2;}
+.dim{position: fixed; width : 100%; height : 100%; background: rgba(0,0,0,0.4); opacity: 0; transition: all 0.5s; z-index: -1;}
+
+.cont1 .popup{text-align: right; padding : 10px 10px 0 0;}
+.title{font-size : 20px; margin : 20px 0 30px 0;}
+.cont1 a{text-decoration : none; color : black;}
+.cont1 .ch_name{display: block; padding : 10px 0 10px 0;}
+.cont1 .ch_plat{padding : 0 0 5px 0;}
+.cont1 .ch_intro{padding : 0 0 5px 0;}
+.cont1 .ch_ad{padding : 0 0 5px 0;}     
+
+/* 레이아웃 */
+#wap{margin: 0 auto; width : 1250px; }
+#header{width : 1250px; height : 100px;}
+#side{float : left; width : 160px; height : 570px;}
+#contents{float : left; width : 1200px; height : 500px}
+#footer{width : 1090px; height :100px;}
+#all_channel_list{ position : absolute; margin : 0px 0px -50px 220px}
+#popularity_channel_list{position : absolute; margin : 250px 219px }
+     
+/* 컨테이너 */
+.container {width : 1500px; height : inherit; margin: 0 auto;}
+
+/* 채널 목록 *
+     
+/* 레이아웃 */
+#header{background-color:white;}
+#side{background-color: white;}
+#cont_cont {background-color: #F6F6F6;}
+#cont_img{background-color: white;}
+#footer {background-color : white;}
+
+/* 헤더 */
+.header {}
+.header .header-menu {text-align : right;}
+.header .header-menu a { display : inline-block; color : #4C4C4C; text-decoration : none;
+                        padding : 4px 0px 0px 3px; margin-right : 15px; position: relative;}
+.header .header-menu a:hover {text-decoration: underline; color : #E5A102;}
+.header-menu a:before{content:''; width : 1px; height : 15px; position: absolute; background: #4C4C4C; left : -9px; top : 10px;}
+.header-menu a:first-child:before{width: 0px; height: 0px;}
+.header .header-title {}
+.header .header-title h1{ display : inline-block; font-family : Arial; color :#353535;
+                        font-size : 39px; margin-left : 35px; margin-top : 1px;}
+.header .search{position: absolute; left : 590px; top : 40px;}
+.header .search .name{height : 33px; width : 200px; border-radius : 5px; border: solid #6a6a6a; padding : 0px 6px;}
+.header .search button[type=submit]{background-color:#6a6a6a; color :white; font-size: 15px; border: solid #6a6a6a;
+                  border-radius: 5px; padding : 4px 6px;}
+
+/* 사이드 */
+.side_menu {list-style-type : none; margin : 0px; padding : 0px; width : 160px;
+            height : 500px; background-color : white ; border-right: solid #D5D5D5 1px;}
+.side_menu li a {text-decoration : none; display:block; padding : 10px 20px; color : #000;}
+.side_menu li a.active { background-color : #E5A102; color : white;}
+.side_menu li a:hover{ background-color: #FFE066; color : #e0e0e0;}
+.side_menu hr.garo { border : solid 1px #D5D5D5;}
+.side_scroll {overflow-x : hidden; overflow-y: auto;}
+
+
+/* 컨텐츠 레이아웃 */
+.cont{overflow : hidden; border-top: solid 1px #D5D5D5; border-left : solid 1px #D5D5D5; border-bottom: solid 1px #D5D5D5;}
+.cont .box{float : left; background-color: white; margin : 0px 0px 45px 45px;}
+.cont .cont1{width : 1000px; height: 330px; margin-top : 35px; margin-bottom: 5px; border : solid 1px #EAEAEA;}
+.cont .cont2{width : 1000px; height : 330px; margin-top : 5px; margin-bottom : 5px; border : solid 1px #EAEAEA;}
+.cont .cont3{width : 1000px; height : 330px; margin-top : 5px; margin-bottom : 35px; border : solid 1px #EAEAEA;}
+.cont .box .box_tit{padding-left : 28px; padding-bottom: 5px; font-size : 15px;}
+.scroll{overflow-x: hidden; overflow-y: auto;}
+
+
+/* 컨텐츠 이미지 */
+.cont .box .box_img {position : relative; padding : 2px 62px;}
+.cont .box .box_img .prev{position: absolute; left : 10px; top : 10px;}
+.cont .box .box_img .next{position: absolute; right : 10px; top : 10px;}
+.box .box_img ul{ list-style-type: none; display: inline-block; }
+.box .box_img ul li{ float : left; margin : -47px 5px -16px -16px;}
+.box .box_img ul li : last-child{text-align: right;}
+.box .box_img ul li.img1{text-align: left;}
+.box .box_img ul li.img2{}
+.box .box_img ul li.img3{}
+.box .box_img ul li.img4{text-align: right;}
+
+/* 푸터 */
+.footer{ font-size: 12px; text-align :center;display: inline; border-left : solid 1px #D5D5D5;}
+.footer li{display : inline; padding : 0px 0px 20px 20px;}
+.footer li a{text-decoration: none; color : black;}
+
+/* 채널 목록 클래스 */
+.thumbnail {
+         
+         list-style : none; /* <li>태그의 위의 이미지처럼 목록을 나타내는 점을 없앤다. */
+        float : left; /* <li>태그들이 왼쪽에 흐르게 설정(그러면 아래있는 내용은 오른쪽으로 옴) */
+        line-height : 30px; /* 글씨가 가운데로 오도록 설정하기 위해 한줄의 높이를 30px로 설정 */
+        vertical-align : middle; /* 세로 정렬을 가운데로 설정(위의 line-height와 같은 설정 필요함) */
+        text-align : center; /* 글씨 정렬을 가운데로 설정 */
+         
+}
+     .Left_arrow img{
+         position : absolute;
+         margin : 576px 100px 0px 405px;
+           
+     }
+     
+     .Right_arrow img{
+        position : absolute;
+        margin : 6px 447px
+        
+
+            
+            
+     }
+     .thumbnail ul {
+         float : left;
+        
+     }
+     
+/* 채널 목록 */
+
+.list_title {
+    
+    text-align : left;
+    font-size : 22px;
+    margin : 
+     }
+     
+     
+.thumbnail_size img {
+         display : block;
+         max-width : 100px;
+         max-height : 90px;
+         width : 150px;
+         
+     }
+     .thumbnail ul li {
+        list-style : none;
+        float : left;
+        line-height : 30px;
+         vertical-align : ;
+         text-align : right;
+     }     
+     
+        
+     
+     
+   </style>
+        
+</head>
+
+<script type = "text/javascript" src = "http://code.jquery.com/jquey-3.2.1.min.js"></script>
+<%
+    var infoName
+%>    
+<script>
+
+    $( document ).ready( function() {
+        
+        $('#name').click(function() {
+            infoName = $(this).attr('value');
+            console.log(infoName);
+        });
+    });
+    
+</script>    
+
+<body>
+
+<% console.log(infoName) %>
+<form method = "post">
+<article>
+<div id= "wap">
+<div id ="header">
+<div class = "con">
+  <div class = "sticky">
+  <div class = "header">
+    <div class = "header-menu">
+      <a href="/login" class = "btn btn-default"><span class = "fa fa-user"></span>Login</a>
+      <a href ="#Mypage">Mypage</a>
+      <a href = "/regChannel">Registration</a>
+    </div>
+    <!-- header-menu-->
+  <div class = "header-title">
+  <a href="#home"><h1>Creator Promoting Service</h1></a>
+  </div>
+  <!-- header-title -->
+  <div class = "search">
+  <input class = "name" type = "name" value = "Input creator name" button = "확인" />
+  	    <button type = "submit">확인</button>
+      </div>
+      <!-- header search -->
+  </div>
+</div>
+</div>
+</div>
+<!-- //header -->
+
+
+<div id ="side">
+  <div class = "side_scroll">
+<div class = "side_menu">
+  <li><a class = "active" href = "#home">Home</a></li>
+  <li><a href = "#인기">인기크리에이터</a></li>
+  <li><a href = "#추천">추천크리에이터</a></li>
+  <hr class = "garo">
+  <li><a href = "#game">게임</a></li>
+  <li><a href = "#mukbang">먹방</a></li>
+  <li><a href = "#humor">유머</a></li>
+  <li><a href = "#music">음악</a></li>
+  <li><a href = "#travel">여행</a></li>
+  <li><a href = "#movie">영화</a></li>
+  <li><a href = "#interview">인터뷰</a></li>
+  <li><a href = "#news">뉴스</a></li>
+  <li><a href = "#education">교육</a></li>
+  <li><a href = "#theothers">기타</a></li>
+  <li><a href = "#beauty">Beauty</a></li>
+  <li><a href = "#ASMR">ASMR</a></li>
+  <li><a href = "#v-log">V-log</a></li>
+  <li><a href = "#bulletin board">자유게시판</a></li>
+</div>
+</div>
+</div>
+    
+<!-------- 채널 목록 -------->
+
+<div id = "all_channel_list">
+<%
+var curSet = pasing.curset
+var endPage = pasing.endPage
+var startPage = pasing.startPage
+var totalSet = pasing.totalSet
+var totalPage = pasing.totalPage
+var page_list_size = pasing.page_list_size
+var page_size = pasing.page_size
+var curPage = pasing.curPage
+var prePage;
+var nextPage = parseInt(curPage) + 1;
+var arrIndex = 0;
+var filenameArr = new Array();
+var nameArr = new Array();
+var contentArr = new Array();
+var platformArr = new Array();
+var addressArr = new Array();
+var introductionArr = new Array();
+    
+if(curPage == 1)
+    {
+        prePage = 1;
+    }
+else
+    {
+        prePage = curPage - 1;
+    }
+%>
+    
+    
+
+<span>
+    
+    
+<div class = "all_creator">    
+<div class = "channel_list">
+    <div class = "thumbnail">
+ 
+        
+         <div class = "Left_arrow">
+                <img onclick = "javascript:location.href = 'http://localhost:3000/pasing/<%= prePage %>';" src = "../public/image/Left_arrow.png"> 
+
+    </div>
+
+    
+
+        
+    <table width = "950" height = "500" border = "0" >
+    <p class = "list_title">
+        
+     전체 크리에이터
+        
+    </p>
+        
+      <thead>
+          <tr>
+          <th>    </th>
+          </tr>
+        </thead>
+
+        <tbody>
+            
+            <br>
+            
+                            
+            <% data.forEach(function (item, index){
+                
+               
+               filenameArr[arrIndex] = item.filename;
+               nameArr[arrIndex] = item.name;
+               contentArr[arrIndex] = item.content;
+               platformArr[arrIndex] = item.platform;
+                introductionArr[arrIndex] = item.introduction;
+                addressArr[arrIndex] = item.address;
+                
+                console.log(filenameArr[arrIndex]);
+                console.log(nameArr[arrIndex]);
+                arrIndex = arrIndex + 1;
+                
+            }) %>
+            
+ 
+<p> </p>
+<p><br></p>
+            
+               <tr>
+                   <% for(var i = 0; i < 5; i++) { %>
+                   <td>
+                   <div class = "thumbnail_size">
+                       <li><a href = '/info/<%= nameArr[i] %>'>
+                               
+                           <img id = "name" value = "<%= nameArr[i] %>" src = "http://localhost:3000/uploads/<%= filenameArr[i] %>"/>
+                           </a></li>
+                   </div>   
+                       <a href = '/info/<%= nameArr[i] %>'><%= nameArr[i] %></a>
+                </td>
+                   
+                   <% } %>
+                   
+            </tr>
+            
+            <tr>
+                   <% for(var i = 5; i < 10; i++) { %>
+                   <td>
+                   <div class = "thumbnail_size">
+                       <li><a href = '/info/<%= nameArr[i] %>'>
+                               <img src = "http://localhost:3000/uploads/<%= filenameArr[i] %>"/>
+                           </a></li>
+                   </div>   
+                       <a href = '/info/<%= nameArr[i] %>'><%= nameArr[i] %></a>
+                </td>
+                <% } %>
+                
+    
+            </tr>
+            <tr>
+                
+                   <% for(var i = 10; i < 15; i++) { %>
+                   <td>
+                   <div class = "thumbnail_size">
+                       <li><a href = '/info/<%= nameArr[i] %>'>
+                               <img src = "http://localhost:3000/uploads/<%= filenameArr[i] %>"/>
+                           </a></li>
+                   </div>   
+                       <a href = '/info/<%= nameArr[i] %>'><%= nameArr[i] %></a>
+                </td>
+                   <% } %> 
+            </tr>
+            
+        </tbody>
+    </table>
+    
+        <div class = "Right_arrow">
+                <img onclick = "javascript:location.href = 'http://localhost:3000/pasing/<%= nextPage %>';" src = "../public/image/Right_arrow.png">
+                    </div>
+               
+    </div>
+</div>
+    
+<%
+    var queryString = 'select * from channel where name = ?'
+    
+    getConnection().query(queryString, [infoName], function(error, result) {
+        if(error) {
+            console.log('mysql 조회 실패');
+            return
+        }
+    });
+    console.log(result[0].name);
+    
+%>
+                
+<br><br><br><br><br><br><br><br><br><br><br>
+    
+    </div>
+    </span>
+    </div>    
+  
+<script>
+        
+// ajax기능 함수 정의
+function fetchPage(name) {
+    fetch(name).then(function(response) {
+        response.test().then(function(text) {
+            document.qeurySelector('article').innerHTML = text;
+         })
+        });
+    }
+</script>
+    
+    
+
+    
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>    
+    
+
+  <!-- //contents -->
+
+<div id = "footer">
+<div class = "container">
+<div class = "footer">
+<ul>
+  <li><a href ="#">사이트 도움말</a></li>
+  <li><a href ="#">사이트 이용약관</a></li>
+  <li><a href ="#">사이트 운영규칙</a></li>
+  <li><a href = "#">개인정보</a></li>
+</ul>
+<address>
+  Copyright&copy;wap5.co.kr All Right Rederved
+</address>
+</div>
+</div>
+</div>
+  <!-- //footer -->
+</div>
+<!-- wap -->
+
+
+<script type="text/javascript">
+  document.documentElement.style.overflow = "hidden";
+  //   document.getElementById("contents").style.overflow = "hidden";
+  //   //   document.getElementById("contents").scrollIntoView(true);
+</script>
+    
+    </article>
+    </form>
+    
+</body>
+</html>
