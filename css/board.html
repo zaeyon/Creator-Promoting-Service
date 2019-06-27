@@ -2,7 +2,6 @@
 <head>
 <title>자유게시판</title>
 <style type="text/css">
-</head>
 /* boardcss_list 에서 사용되는 글 등록 버튼 테이블 크기 */
 #boardcss_list_add_button_table {width: 100%; margin:0 auto 15px;}
 /* 화면에 보여지는 글 등록 버튼 */
@@ -12,16 +11,15 @@
 #boardcss_list_add_button_table .boardcss_list_add_button ul { width: 100%; overflow: hidden;height: 10px;}
 #header {width: 100%; margin:0 auto 15px}
 
-<colgroup>
+/* <colgroup>
 <col width="15%" />
 <col width="45%" />
 <col width="20%" />
 <col width="20%" />
-  </colgroup>
+  </colgroup> */
 
-.header {}
-.header_title{display : inline-block; font-family : Arial; color :#353535;
-                        font-size : 15px; margin-left : 35px; margin-top : 1px;}
+.header_title a{display : inline-block; font-family : Arial; color :#353535;
+        font-size : 35px; margin-left : 35px; margin-top : 1px; text-decoration:none;}
 
 .boardcss_list_table {width: 100%; /* 세부 설정은 나중에 */ }
 /* 화면에 보여지는 글 목록 테이블 */
@@ -66,7 +64,7 @@
 .closeButton { width: 85px; text-align: center; display: inline-block; border: 1px solid #bebebe; padding: 6px 0 6px; cursor: pointer; font-weight: bold; }
 
 </style>
-
+</head>
 <body>
 <!-- 등록버튼 시작 -->
 <!-- 제목 -->
@@ -81,7 +79,6 @@
 <!-- <div class="">
 <ul></ul>-->
 <p class="add_button">등록</p>
-<ul></ul>
 <!-- </div>-->
 </div>
 </div>
