@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="C:\Users\LIM JONG HYEON'\Desktop\왑 5조\css\css\jong hyeon/slick.css">
  <meta charset="utf-8"/>
  <style type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Ewert" rel="stylesheet">
 /* 레이아웃 */
 #wap{margin: 0 auto; width : 100%; }
 #header{width : 100%; height : 100%;}
@@ -15,7 +15,7 @@
 .container {width : 1250px; height : inherit; margin: 0 auto;}
 
 /* 레이아웃 */
-#header{background-color:white;}
+#header{background-color: #80FF00;}
 #side{background-color: white;}
 #cont_cont {background-color: #F6F6F6;}
 #cont_img{background-color: white;}
@@ -58,6 +58,8 @@
 
 
 /* 컨텐츠 이미지 */
+
+
 .cont .box .box_img {position : relative; padding : 2px 62px;}
 .cont .box .box_img .prev{position: absolute; left : 10px; top : 10px;}
 .cont .box .box_img .next{position: absolute; right : 10px; top : 10px;}
@@ -65,14 +67,18 @@
 .box .box_img ul li{ float : left; margin : -47px 5px -16px -16px;}
 .box .box_img ul li : last-child{text-align: right;}
 .box .box_img ul li.img1{text-align: left;}
-.box .box_img ul li.img2{}
-.box .box_img ul li.img3{}
+.box .box_img ul li.img2{text-align: center;}
+.box .box_img ul li.img3{text-align: center;}
 .box .box_img ul li.img4{text-align: right;}
+
+
 
 /* 푸터 */
 .footer{ font-size: 12px; text-align :center;display: inline; border-left : solid 1px #D5D5D5;}
 .footer li{display : inline; padding : 0px 0px 20px 20px;}
 .footer li a{text-decoration: none; color : black;}
+
+
 
 input[id="menuicon"] {display:none;}
 input[id="menuicon"] + label {display:block;margin-top:-60px;margin-bottom:30px;width:30px;height:20px;position:relative;cursor:pointer;}
@@ -89,7 +95,6 @@ div[class="sidebar"] {width:160px;height:100%;background:white;position:absolute
 input[id="menuicon"]:checked + label + div {left:0;}
 
 
-
    </style>
 </head>
 
@@ -98,6 +103,13 @@ input[id="menuicon"]:checked + label + div {left:0;}
 
 <div id= "wap">
 <div id ="header">
+  <img src ="image\logo.png" height="100" alt="logo" title="logo">
+  <style>
+  img {
+    float : left;
+    margin : -10px;
+  }
+  </style>
 <div class = "container">
   <div class = "sticky">
   <div class = "header">
@@ -248,7 +260,18 @@ input[id="menuicon"]:checked + label + div {left:0;}
 <!— //footer —>
 <!— </div> —>
 <!— wap —>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script  src="C:\Users\LIM JONG HYEON'\Desktop\왑 5조\css\css\jong hyeon/slick.min.js"></script>
 <script type="text/javascript">
+//배너
+//html 마크업 셋팅 -> css 연동 -> 제이쿼리 연동 --> 제이쿼리 호출
+$(".box").slick({
+
+
+  });
+
   document.documentElement.style.overflow = "hidden";
   //   document.getElementById("contents").style.overflow = "hidden";
   //   //   document.getElementById("contents").scrollIntoView(true);
