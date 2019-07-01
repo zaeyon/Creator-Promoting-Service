@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <style type="text/css">
+   <tytle>내 채널</tytle>
+
+/* 레이아웃 */
+#wrap{width : 100%;}
+#header{width : 100%; height : 100%; }
+#contents{float: left; width : 100%; height : 100%; background :#F6F6F6; border-top: solid 1px #D5D5D5;}
+#footer{float: left; width : 100%; height : 100%; background-color : white; padding-bottom: 20px; border-top: solid 1px #D5D5D5;}
+
+
+/* 헤더 */
+.header-title{ }
+.header-title h1{display : inline-block;  font-family : Arial; color :#353535;
+                 font-size : 40px; padding-left: 40px; margin-top: 25px; margin-bottom: 30px;}
+/* 메뉴 */
+.menu{position: relative;}
+.menu li{float : left; border-top : solid 1px #D5D5D5; list-style-type : none; }
+.menu li a{display : block; text-align : center; text-decoration : none; color : black; font-weight : bold; font-size: 14px;}
+.menu .my-mo{display : block;  border-left : solid 1px #D5D5D5;  line-height : 40px; width : 80px;}
+.menu .my-co{display : block;  border-left : solid 1px #D5D5D5;  border-right : solid 1px #D5D5D5; line-height : 40px; width : 80px;}
+.menu li:hover{background :#E5A102; color : white;}
+.menu li a:hover{color : white;}
+
+/* 컨텐츠 */
+.cont{}
+.cont .cont_box1{background-color: white; height : 400px; margin : 30px 150px 10px 150px; }
+.cont .cont_box2{background-color: white; height : 250px; margin : 10px 150px 30px 150px;}
+.ch_img{padding : 20px 0 20px 60px;}
+.ch_name{font-size: 25px; font-weight: bold; padding: 10px 0px 0px 60px;}
+.ch_intro{font-size: 15px; padding-top: 20px; padding-left: 60px;}
+h2{font-size: 15px; padding : 10px 0px 0px 30px;}
+
+/* 컨텐츠 box2 */
+.ch_vid1{float : left; display: inline-block;}
+.ch_vid1 .img{float : left; padding:10px 20px 0px 30px;}
+.ch_vid2{font-size: 13px;}
+.ch_vid2 .vid_tit{font-size: 15px; font-weight :500; margin : 50px 0 10px 0px; display: inline-block; padding: 20px 0 10px 0px;}
+hr{border : solid 2px #F6F6F6;}
+
+/* 푸터 */
+.footer{ font-size: 12px; text-align :center;display: inline;}
+.footer ul{padding-left: 0px;}
+.footer li{display : inline; padding : 0px 0px 20px 20px;}
+.footer li a{text-decoration: none; color : black;}
+
+</style>
+</head>
+
+
+<body>
+
+<div id = "wrap">
+<div id = "header">
+  <div class = "header-title">
+    <h1>My Channel</h1>
+  </div>
+</div>
+<!--header-->
+
+<div class= "menu">
+  <ul class = "tit">
+  <li class = "my-mo"><a href = "#">내 영상</a></li>
+  <li class = "my-co"><a href = "#">내 댓글</a></li>
+  </ul>
+</div>
+  <!--menu-->
+
+<div id= "contents">
+<div class = "cont">
+  <div class = "cont_box1">
+  <div class = "ch_img">
+    <img width="200" height="200" src="image\img.png">
+  </div>
+    <!--채널 이미지-->
+<hr>
+  <div class = "ch_name">
+   재연TV - 먹방
+  </div>
+    <!--채널 이름-->
+
+  <div class = "ch_intro">
+  안녕하세여 저는 재연 티비에욤
+  <br>
+  재연 티비 많이 구독해주세요
+
+  </div>
+    <!--채널 소개-->
+</div>
+
+  <div class = "cont_box2">
+  <div class = "ch_vid1">
+    <h2>소개 영상</h2>
+    <img src = "image\img.png" width="300" height="160" class="img">
+  </div>
+  <div class = "ch_vid2">
+    <h3 class = "vid_tit">
+      <a title = "재연 TV 소개 영상">재연 TV 소개 영상</a>
+      
+    </h3>
+      <br>
+      안녕하세요
+      <br>
+      재연 TV 첫번째 영상이에요
+</div>
+</div>
+</div>
+<!--contents-->
+
+<div id = "footer">
+  <div class = "footer">
+    <ul>
+      <li><a href ="#">사이트 도움말</a></li>
+      <li><a href ="#">사이트 이용약관</a></li>
+      <li><a href ="#">사이트 운영규칙</a></li>
+      <li><a href = "#">개인정보</a></li>
+    </ul>
+  <address>
+    Copyright&copy;wap5.co.kr All Right Rederved
+  </address>
+  </div>
+  </div>
+  <!--footer-->
+  </div>
+  <!--wrap-->
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8"/>
+ <style type="text/css">
+
+#wrap{width : 100%; }
+#header{width : 100%; height : 100%;}
+#contents{width : 100%; height :100%; padding-top: 60px;}
+#footer{width : 100%; height : 100%; padding-bottom: 20px;}
+
+
+/* 헤더 */
+.header-title{  border-bottom: solid 1px #D5D5D5;}
+.header-title h1{ display : inline-block;  font-family : Arial; color :#353535;
+                 font-size : 40px; padding-left: 40px; margin-top: 25px; margin-bottom: 30px;}
+
+/* 컨텐츠 */
+
+.cont{ text-align : center; border-bottom: solid 1px #D5D5D5;}
+.cont h2{ font-size: 15px; padding: 3px 15px; font: #4C4C4C;}
+.id_field .id1{width : 300px; height : 35px; border : solid 0.8px #4C4C4C; border-radius: 2px; margin-bottom: 14px;}
+.pw_field{padding-top: 10px;}
+.pw_field .pw1{width : 300px; height : 35px; border : solid 0.8px #4C4C4C; border-radius: 2px; margin-bottom: 14px;}
+.pw_re_field .pw_re2{width : 300px; height : 35px; border : solid 0.8px #4C4C4C; border-radius: 2px; margin-bottom: 14px;}
+.pw_re1_field .pw_re3{width : 300px; height : 35px; border : solid 0.8px #4C4C4C; border-radius: 2px; margin-bottom: 14px;}
+.nick_field .nick1{width : 300px; height : 35px; border : solid 0.8px #4C4C4C; border-radius: 2px; margin-bottom: 14px;}
+ p{font-size: 13px; margin-top: 5px; color: #4C4C4C;}
+.cont .btn{ width : 300px; height : 42px;  margin-bottom: 100px; margin-top: 30px; font-size: 15px;
+  border-radius: 3px; border : solid 1px; background-color: #E5A102; color : white;}
+
+/* 푸터 */
+.footer{ font-size: 12px; text-align :center;display: inline;}
+.footer li{display : inline; padding : 0px 0px 20px 20px;}
+.footer li a{text-decoration: none; color : black;}
+
+</style>
+</head>
+
+<body>
+ <div id = "wrap">
+   <div id ="header">
+   <div class = "header-title">
+         <h1>개인정보 변경</h1>
+   </div>
+   <!-- header-title -->
+    <div>
+    <!-- //header -->
+
+<div id = "contents">
+   <div class = "cont">
+     <div class = "id_field">
+     <h2 class = "e22"><label for ="id">아이디</label></h2>
+     <input type = "text" name = "id" id = "id" class = "id1">
+        <P>아이디는 변경이 불가능합니다</P>
+      </div>
+<!--id_field-->
+
+  <div class = "pw_field">
+   <h2><label for = "pw">현재 비밀번호</label></h2>
+     <input type = "text" name = "pw" id= "pw" class = "pw1">
+  </div>
+  <!--pw_field-->
+
+  <div class = "pw_re_field">
+   <h2><label for = "pw_re">변경 비밀번호</label></h2>
+     <input type = "text" name = "pw_re" id="pw_re" class= "pw_re2">
+  </div>
+  <!--pw_re_field-->
+
+  <div class = "pw_re1_field">
+   <h2><label for = "pw_re1">비밀번호 확인</label></h2>
+     <input type = "password" name = "pw_re1" id = "pw_re1" class = "pw_re3">
+  </div>
+  <!--pw_re1_field-->
+  <div class = "nick_field">
+   <h2><label for = "nickname">닉네임</label></h2>
+     <input type = "text" name = "nickname" id = "nickname" class= "nick1">
+  </div>
+  <!--nick_field-->
+
+    <button class = "btn" type= "submit">수정</button>
+  </div>
+</div>
+
+<div id = "footer">
+<div class = "footer">
+<ul>
+  <li><a href ="#">사이트 도움말</a></li>
+  <li><a href ="#">사이트 이용약관</a></li>
+  <li><a href ="#">사이트 운영규칙</a></li>
+  <li><a href = "#">개인정보</a></li>
+</ul>
+<address>
+  Copyright&copy;wap5.co.kr All Right Rederved
+</address>
+</div>
+</div>
+<!--footer-->
+</div>
+<!--wrap-->
+</body>
+</html>
